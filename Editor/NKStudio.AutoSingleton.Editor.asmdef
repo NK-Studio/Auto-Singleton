@@ -1,0 +1,19 @@
+{
+    "name": "NKStudio.AutoSingleton.Editor",
+    "rootNamespace": "AutoSingleton",
+    "references": [
+        "GUID:1db18b5b417814eeab64edcaa13d0e60",
+        "GUID:69448af7b92c7f342b298e06a37122aa"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
