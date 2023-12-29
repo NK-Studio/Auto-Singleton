@@ -47,7 +47,7 @@ namespace AutoSingleton
         /// </summary>
         /// <typeparam name="T">The type of manager to check.</typeparam>
         /// <returns>Returns true if a manager of the specified type exists; otherwise, false.</returns>
-        public static bool Has<T>() where T : class
+        public static bool Has<T>() where T : MonoBehaviour
             => Managers.ContainsKey(typeof(T));
 
         /// <summary>
@@ -75,6 +75,21 @@ namespace AutoSingleton
             }
 
             return types.ToArray();
+        }
+
+        /// <summary>
+        /// Releases the specified singleton instance.
+        /// </summary>
+        /// <typeparam name="T">The type of the singleton.</typeparam>
+        /// <param name="singleton">The singleton instance to release.</param>
+        public static void Release<T>(T singleton) where T : MonoBehaviour
+        {
+            Managers.Remove(singleton.GetType());
+        }
+
+        public static Dictionary<Type, MonoBehaviour> GetManager()
+        {
+            return Managers;
         }
     }
 }
