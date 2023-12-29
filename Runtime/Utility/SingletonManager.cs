@@ -167,10 +167,11 @@ namespace USingleton
         }
 
         /// <summary>
-        /// Adds a MonoBehaviour instance to the list of singleton managers.
+        /// Adds the specified self singleton instance to the managers dictionary and optionally marks it to not be destroyed on scene load.
         /// </summary>
-        /// <param name="singleton">The MonoBehaviour instance to be added as a singleton manager.</param>
-        /// <param name="useDontDestroyOnLoad"></param>
+        /// <param name="singleton">The self singleton instance to add.</param>
+        /// <param name="useDontDestroyOnLoad">Flag indicating whether to mark the singleton to not be destroyed on scene load.</param>
+        /// <returns>Nothing.</returns>
         public static void Create(SelfSingleton.Singleton singleton, bool useDontDestroyOnLoad)
         {
             if (!Managers.ContainsKey(singleton.GetType()))

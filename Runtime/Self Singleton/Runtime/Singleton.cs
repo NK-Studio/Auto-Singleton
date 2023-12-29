@@ -4,14 +4,14 @@ namespace USingleton.SelfSingleton
 {
     public abstract class Singleton: MonoBehaviour  
     {
-        protected virtual bool UseDontDestroyOnLoad()
+        protected virtual bool DontDestroyOnLoad()
         {
             return true;
         }
         
         protected virtual void Awake()
         {
-            SingletonManager.Create(this, UseDontDestroyOnLoad());
+            SingletonManager.Create(this, DontDestroyOnLoad());
             name = GetType().Name;
         }
         

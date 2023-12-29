@@ -9,7 +9,7 @@ using USingleton;
 using USingleton.AutoSingleton;
 using Object = UnityEngine.Object;
 
-#if  AUTO_SINGLETON_USE_ADDRESSABLE
+#if AUTO_SINGLETON_USE_ADDRESSABLE
 using UnityEditor.AddressableAssets;
 using UnityEditor.AddressableAssets.Settings;
 using UnityEditor.AddressableAssets.Settings.GroupSchemas;
@@ -18,7 +18,8 @@ using UnityEditor.AddressableAssets.Settings.GroupSchemas;
 [CustomEditor(typeof(AutoSingletonSettings))]
 public class AutoSingletonEditor : Editor
 {
-    public VisualTreeAsset visualTreeAsset;
+    private VisualTreeAsset visualTreeAsset;
+    private StyleSheet styleSheet;
 
     private VisualElement _root;
 
@@ -28,7 +29,16 @@ public class AutoSingletonEditor : Editor
 
     public override VisualElement CreateInspectorGUI()
     {
+        // Load
+        string uxmlPath = AssetDatabase.GUIDToAssetPath("2919b6e2c8bd549508a9ec7307076390");
+        visualTreeAsset = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(uxmlPath);
+        
+        string ussPath = AssetDatabase.GUIDToAssetPath("2174863b709254c95ac78e9e9c5f06a1");
+        styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(ussPath);
+
+        // Apply
         _root = visualTreeAsset.CloneTree();
+        _root.styleSheets.Add(styleSheet);
 
         var listContainer = _root.Q<IMGUIContainer>("List-Container");
 
@@ -64,7 +74,7 @@ public class AutoSingletonEditor : Editor
                     if (!AssetDatabase.IsValidFolder("Assets/Resources"))
                         AssetDatabase.CreateFolder("Assets", "Resources");
                 }
-#if  AUTO_SINGLETON_USE_ADDRESSABLE
+#if AUTO_SINGLETON_USE_ADDRESSABLE
                 else
                 {
                     // 파일이 존재하는지 체크
@@ -88,7 +98,7 @@ public class AutoSingletonEditor : Editor
                     // 프리팹 생성
                     PrefabUtility.SaveAsPrefabAsset(prefab, $"Assets{path}");
 
-#if  AUTO_SINGLETON_USE_ADDRESSABLE
+#if AUTO_SINGLETON_USE_ADDRESSABLE
                     // 추가적인 어드레서블 처리
                     if (attribute.UseAddressable)
                     {
@@ -143,7 +153,7 @@ public class AutoSingletonEditor : Editor
         Menu.SetChecked(menuPath, nextFlag);
 
         BuildTargetGroup buildTargetGroup = EditorUserBuildSettings.selectedBuildTargetGroup;
-        
+
         if (nextFlag)
         {
             string defines = PlayerSettings.GetScriptingDefineSymbolsForGroup(buildTargetGroup);
@@ -157,4 +167,27 @@ public class AutoSingletonEditor : Editor
             PlayerSettings.SetScriptingDefineSymbolsForGroup(buildTargetGroup, defines);
         }
     }
+
+    [MenuItem("Tools/Auto Singleton/About", false, 2000)]
+    private static void About()
+    {
+        var path = AssetDatabase.GUIDToAssetPath("dd38d53d7bf7b40fa960de2e03525ea4");
+        var packageJson = AssetDatabase.LoadAssetAtPath<TextAsset>(path);
+        PackageInfo info = JsonUtility.FromJson<PackageInfo>(packageJson.text);
+        
+        Debug.Log($"Auto Singleton v{info.version}");
+    }
+    
+    [Serializable]
+    internal class PackageInfo
+    {
+        public string name;
+        public string displayName;
+        public string version;
+        public string unity;
+        public string description;
+        public List<string> keywords;
+        public string type;
+    }
+    
 }
