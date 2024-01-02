@@ -175,7 +175,7 @@ public class AutoSingletonEditor : Editor
         var packageJson = AssetDatabase.LoadAssetAtPath<TextAsset>(path);
         PackageInfo info = JsonUtility.FromJson<PackageInfo>(packageJson.text);
         
-        Debug.Log($"Auto Singleton v{info.version}");
+        Debug.Log($"USingleton v{info.version}");
     }
     
     [Serializable]
