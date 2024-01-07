@@ -21,23 +21,14 @@ namespace USingleton.AutoSingleton
         /// </value>
         public bool UseAddressable { get; }
 
-#if UNITY_EDITOR
-        /// <summary>
-        /// 이 속성이 참이면 프리팹을 생성하지 않습니다.
-        /// </summary>
-        public bool DoNotCreate { get; }
-#endif
-
         /// <summary>
         /// 매니저로 전환합니다.
         /// </summary>
         /// <param name="prefabName">프리팹으로 변환할 때 사용할 이름</param>
         /// <param name="useAddressable">Addressable Asset System 스타일을 사용합니까? (요구사항: Addressable Asset System) </param>
-        /// <param name="debugDoNotCreate">디버그 용도로 사용해야하며, true시 자동으로 프리팹이 생성되지 않습니다.</param>
-        public SingletonAttribute(string prefabName, bool useAddressable = false, bool debugDoNotCreate = false)
+        public SingletonAttribute(string prefabName, bool useAddressable = false)
         {
             PrefabName = prefabName;
-            DoNotCreate = debugDoNotCreate;
 #if !USE_ADDRESSABLES && USINGLETON_USE_ADDRESSABLE
             UseAddressable = false;
 #else

@@ -1,4 +1,14 @@
 # Changelog
+
+## [1.2.4] - 2024-01-07
+### Added
+- Self Singleton also added a function to automatically create a prefab.
+- Automatically created if not present when checked with Singleton.Instance<T>() - Self Singleton Only
+ 
+## [1.2.3] - 2024-01-07
+### change
+- Change settings file order
+
 ## [1.2.2] - 2024-01-07
 ### Added
 - Improved stability of addressable method

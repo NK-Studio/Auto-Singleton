@@ -22,13 +22,13 @@ namespace USingleton
     public static class SingletonManager
     {
         internal static readonly Dictionary<Type, MonoBehaviour> Managers = new();
-        internal static readonly Type[] KAllManagerTypes = GetAllSingletonTypes();
+        internal static readonly Type[] KAllManagerTypes = GetAllSingletonAttributeTypes();
 
         /// <summary>
         /// Retrieves all the types that are decorated with the SingletonAttribute and are not abstract.
         /// </summary>
         /// <returns>An array of Type objects representing the singleton types.</returns>
-        public static Type[] GetAllSingletonTypes()
+        public static Type[] GetAllSingletonAttributeTypes()
         {
             List<Type> types = new();
             foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
@@ -51,6 +51,33 @@ namespace USingleton
             return types.ToArray();
         }
 
+        /// <summary>
+        /// Retrieves all the types that are decorated with the SingletonAttribute and are not abstract.
+        /// </summary>
+        /// <returns>An array of Type objects representing the singleton types.</returns>
+        public static Type[] GetAllSingletonTypes()
+        {
+            List<Type> types = new();
+            foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
+            {
+                Type[] assemblyTypes = null;
+
+                try
+                {
+                    assemblyTypes = assembly.GetTypes();
+                }
+                catch
+                {
+                    Debug.LogError($"Unable to load type from assembly : {assembly.FullName}");
+                }
+
+                if (assemblyTypes != null)
+                    types.AddRange(assemblyTypes.Where(t => typeof(SelfSingleton.Singleton).IsAssignableFrom(t) && !t.IsAbstract));
+            }
+
+            return types.ToArray();
+        }
+        
         /// <summary>
         /// This method automatically creates all the manager objects based on the settings provided in AutoSingletonSettings.
         /// </summary>
@@ -207,9 +234,18 @@ namespace USingleton
         /// <returns>An instance of the specified generic type T if found in the Managers dictionary. Otherwise, returns null.</returns>
         public static T Instance<T>() where T : MonoBehaviour
         {
+            // If there is a manager
             if (SingletonManager.Managers.ContainsKey(typeof(T)))
                 return (T)SingletonManager.Managers[typeof(T)];
-
+            
+            // If there is no manager
+            if (typeof(T).BaseType == typeof(USingleton.SelfSingleton.Singleton))
+            {
+                T autoCreateInstance = Resources.Load<T>("Managers/" + typeof(T).Name);
+                if (autoCreateInstance)
+                    return Object.Instantiate(autoCreateInstance);;
+            }
+            
             if (AutoSingletonSettings.CurrentSettings.ShowDebugLog)
                 Debug.LogError($"매니저 : '{typeof(T)}'가 액세스 되지 않았습니다. Auto Singleton Settings에서 해당 매니저가 제외됬는지 확인해주세요.");
 
@@ -224,32 +260,6 @@ namespace USingleton
         public static bool HasInstance<T>() where T : MonoBehaviour
         {
             return SingletonManager.Managers.ContainsKey(typeof(T));
-        }
-
-        // ReSharper disable Unity.PerformanceAnalysis
-        /// <summary>
-        /// Tries to get an instance of type T from the SingletonManager.
-        /// </summary>
-        /// <param name="instance">The instance of type T if found, null otherwise.</param>
-        /// <typeparam name="T">The type of instance to get.</typeparam>
-        /// <returns>True if an instance of type T is found, false otherwise.</returns>
-        public static bool TryGetInstance<T>(out T instance) where T : MonoBehaviour
-        {
-            Type typeOfT = typeof(T);
-
-            if (SingletonManager.Managers.TryGetValue(typeOfT, out MonoBehaviour manager))
-            {
-                instance = (T)manager;
-                return true;
-            }
-
-            if (AutoSingletonSettings.CurrentSettings.ShowDebugLog)
-            {
-                Debug.LogError($"Manager: '{typeOfT}' has not been accessed. Please check if this manager has been excluded in Auto Singleton Settings.");
-            }
-
-            instance = null;
-            return false;
         }
     }
 }
