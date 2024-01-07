@@ -8,6 +8,9 @@ using UnityEditor;
 
 namespace USingleton.AutoSingleton
 {
+    /// <summary>
+    /// AutoSingleton 기능에 대한 설정을 나타냅니다.
+    /// </summary>
     public class AutoSingletonSettings : ScriptableObject
     {
         public string[] ExcludedManagers => excludedManagers;

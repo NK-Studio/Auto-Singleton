@@ -19,6 +19,9 @@ using UnityEditor.AddressableAssets.Settings;
 
 namespace USingleton
 {
+    /// <summary>
+    /// 이 클래스는 SingletonAttribute를 기반으로 싱글톤 개체의 생성 및 릴리스를 관리합니다.
+    /// </summary>
     public static class SingletonManager
     {
         internal static readonly Dictionary<Type, MonoBehaviour> Managers = new();
@@ -77,7 +80,7 @@ namespace USingleton
 
             return types.ToArray();
         }
-        
+
         /// <summary>
         /// 이 메서드는 AutoSingletonSettings에 제공된 설정을 기반으로 모든 관리자 개체를 자동으로 생성합니다.
         /// </summary>
@@ -108,7 +111,7 @@ namespace USingleton
 
                 // 해당 매니저의 어트리뷰트의 내용을 가져온다.
                 var attribute = type.GetCustomAttribute<SingletonAttribute>();
- 
+
                 if (attribute != null)
                 {
                     // Resources 폴더 방식
@@ -224,6 +227,10 @@ namespace USingleton
 
 namespace USingleton
 {
+    /// <summary>
+    /// Singleton 클래스는 지정된 유형의 인스턴스 존재 여부를 검색하고 확인하기 위한 정적 메서드를 제공합니다. 이는 특정 인스턴스가 하나만 보장되도록 설계되었습니다.
+    /// 애플리케이션에 유형이 존재합니다.
+    /// </summary>
     public static class Singleton
     {
         // ReSharper disable Unity.PerformanceAnalysis
@@ -237,15 +244,16 @@ namespace USingleton
             // If there is a manager
             if (SingletonManager.Managers.ContainsKey(typeof(T)))
                 return (T)SingletonManager.Managers[typeof(T)];
-            
+
             // If there is no manager
             if (typeof(T).BaseType == typeof(USingleton.SelfSingleton.Singleton))
             {
                 T autoCreateInstance = Resources.Load<T>("Managers/" + typeof(T).Name);
                 if (autoCreateInstance)
-                    return Object.Instantiate(autoCreateInstance);;
+                    return Object.Instantiate(autoCreateInstance);
+                ;
             }
-            
+
             if (AutoSingletonSettings.CurrentSettings.ShowDebugLog)
                 Debug.LogError($"매니저 : '{typeof(T)}'가 액세스 되지 않았습니다. Auto Singleton Settings에서 해당 매니저가 제외됬는지 확인해주세요.");
 

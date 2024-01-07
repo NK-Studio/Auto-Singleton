@@ -2,7 +2,10 @@ using UnityEngine;
 
 namespace USingleton.SelfSingleton
 {
-    public abstract class Singleton: MonoBehaviour  
+    /// <summary>
+    /// Unity에서 싱글톤 디자인 패턴을 구현하기 위한 기본 클래스입니다.
+    /// </summary>
+    public abstract class Singleton : MonoBehaviour  
     {
         /// <summary>
         /// 새로운 씬이 로드될 때 게임 오브젝트가 파괴되는 것을 방지합니다.
