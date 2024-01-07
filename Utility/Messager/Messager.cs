@@ -2,37 +2,41 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace USingleton
+namespace USingleton.Utility
 {
     /// <summary>
-    /// The Messager class provides functionality to register and send messages.
+    /// Messager 클래스는 메시지를 등록하고 보내는 기능을 제공합니다.
     /// </summary>
     public static class Messager
     {
-        public delegate void Message();
-
-        private static readonly Dictionary<string, Message> RegisteredMessages;
-
+        /// <summary>
+        /// 매개 변수와 반환 값이 없는 메서드를 정의하는 대리자를 나타냅니다.
+        /// </summary>
+        public delegate void DoObject();
+        
+        private static readonly Dictionary<string, DoObject> RegisteredMessages;
+        
         static Messager()
         {
-            RegisteredMessages = new Dictionary<string, Message>();
+            // Init
+            RegisteredMessages = new Dictionary<string, DoObject>();
         }
 
         /// <summary>
-        /// Registers a message with the given message name.
+        /// 주어진 메시지 이름으로 메시지를 등록합니다.
         /// </summary>
-        /// <param name="messageName">The name of the message.</param>
-        /// <param name="message">The message to register.</param>
-        public static void RegisterMessage(string messageName, Message message)
+        /// <param name="messageName">메시지의 이름입니다.</param>
+        /// <param name="doObject">등록하려는 메시지 동작입니다.</param>
+        public static void RegisterMessage(string messageName, DoObject doObject)
         {
-            if (!RegisteredMessages.TryAdd(messageName, message))
+            if (!RegisteredMessages.TryAdd(messageName, doObject))
                 Debug.LogWarning($"Messager: The item {messageName} already contains a reference to the message.");
         }
 
         /// <summary>
-        /// Remove a message from the RegisteredMessages dictionary by its name.
+        /// RegisteredMessages에서 이름을 기준으로 메시지를 제거합니다.
         /// </summary>
-        /// <param name="messageName">The name of the message to be removed.</param>
+        /// <param name="messageName">제거할 메시지의 이름입니다.</param>
         public static void RemoveMessage(string messageName)
         {
             if (RegisteredMessages.ContainsKey(messageName))
@@ -40,20 +44,21 @@ namespace USingleton
         }
 
         /// <summary>
-        /// Removes all registered messages.
+        /// 등록된 모든 메시지를 제거합니다.
         /// </summary>
         public static void RemoveAllMessages()
         {
             RegisteredMessages.Clear();
         }
 
+        // ReSharper disable Unity.PerformanceAnalysis
         /// <summary>
-        /// Sends a message with the specified event name.
+        /// 지정된 이벤트 이름으로 메시지를 보냅니다.
         /// </summary>
-        /// <param name="eventName">The name of the event.</param>
+        /// <param name="eventName">이벤트의 이름입니다.</param>
         public static void Send(string eventName)
         {
-            if (RegisteredMessages.TryGetValue(eventName, out Message message))
+            if (RegisteredMessages.TryGetValue(eventName, out DoObject message))
             {
                 try
                 {

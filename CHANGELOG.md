@@ -1,4 +1,8 @@
 # Changelog
+## [1.2.6] - 2024-01-08
+### Fixed
+- Change Messager class name
+
 ## [1.2.5] - 2024-01-08
 ### Fixed
 - Settings UI spacing modification
