@@ -4,6 +4,6 @@
     </ui:GroupBox>
     <ui:GroupBox text="Debug">
         <ui:IMGUIContainer name="List-Container" />
-        <uie:PropertyField binding-path="showDebugLog" name="propertyField-ShowDebugLog" style="margin-top: 3px;" />
+        <uie:PropertyField binding-path="showDebugLog" name="propertyField-ShowDebugLog" style="margin-top: 12px;" />
     </ui:GroupBox>
 </ui:UXML>

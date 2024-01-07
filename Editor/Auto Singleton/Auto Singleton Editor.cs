@@ -107,7 +107,7 @@ namespace AutoSingleton
                     else
                     {
                         // 파일이 존재하는지 체크
-                        path = "/Managers/Prefabs/" + type.Name + ".prefab";
+                        path = "Assets/Managers/Prefabs/" + type.Name + ".prefab";
 
                         // Resources 폴더가 없으면 생성합니다.
                         if (!AssetDatabase.IsValidFolder("Assets/Managers"))
@@ -144,7 +144,7 @@ namespace AutoSingleton
                             }
 
                             //생성한 프리팹을 다시 로드해서 가져옵니다.
-                            Object target = AssetDatabase.LoadAssetAtPath<Object>($"Assets{path}");
+                            Object target = AssetDatabase.LoadAssetAtPath<Object>(path);
 
                             string assetPath = AssetDatabase.GetAssetPath(target);
                             string assetGUID = AssetDatabase.AssetPathToGUID(assetPath);

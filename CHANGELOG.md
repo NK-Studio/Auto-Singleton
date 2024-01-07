@@ -1,6 +1,10 @@
 # Changelog
+## [1.2.5] - 2024-01-08
+### Fixed
+- Settings UI spacing modification
+- Addressable method bug fix
 
-## [1.2.4] - 2024-01-07
+## [1.2.4] - 2024-01-08
 ### Added
 - Self Singleton also added a function to automatically create a prefab.
 - Automatically created if not present when checked with Singleton.Instance<T>() - Self Singleton Only
