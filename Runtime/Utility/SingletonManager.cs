@@ -25,9 +25,9 @@ namespace USingleton
         internal static readonly Type[] KAllManagerTypes = GetAllSingletonAttributeTypes();
 
         /// <summary>
-        /// Retrieves all the types that are decorated with the SingletonAttribute and are not abstract.
+        /// SingletonAttribute로 장식되고 추상이 아닌 모든 유형을 검색합니다.
         /// </summary>
-        /// <returns>An array of Type objects representing the singleton types.</returns>
+        /// <returns>싱글톤 유형을 나타내는 Type 객체의 배열입니다.</returns>
         public static Type[] GetAllSingletonAttributeTypes()
         {
             List<Type> types = new();
@@ -52,9 +52,9 @@ namespace USingleton
         }
 
         /// <summary>
-        /// Retrieves all the types that are decorated with the SingletonAttribute and are not abstract.
+        /// Singleton 클래스를 상속받은 모든 유형을 검색합니다.
         /// </summary>
-        /// <returns>An array of Type objects representing the singleton types.</returns>
+        /// <returns>싱글톤 유형을 나타내는 Type 객체의 배열입니다.</returns>
         public static Type[] GetAllSingletonTypes()
         {
             List<Type> types = new();
@@ -79,7 +79,7 @@ namespace USingleton
         }
         
         /// <summary>
-        /// This method automatically creates all the manager objects based on the settings provided in AutoSingletonSettings.
+        /// 이 메서드는 AutoSingletonSettings에 제공된 설정을 기반으로 모든 관리자 개체를 자동으로 생성합니다.
         /// </summary>
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void AutoCreateAll()
@@ -194,10 +194,10 @@ namespace USingleton
         }
 
         /// <summary>
-        /// Adds the specified self singleton instance to the managers dictionary and optionally marks it to not be destroyed on scene load.
+        /// 지정된 자체 싱글톤 인스턴스를 미리 매니저에 추가하고 선택적으로 씬 로드 시 삭제되지 않도록 표시합니다.
         /// </summary>
-        /// <param name="singleton">The self singleton instance to add.</param>
-        /// <param name="useDontDestroyOnLoad">Flag indicating whether to mark the singleton to not be destroyed on scene load.</param>
+        /// <param name="singleton">추가할 자체 싱글톤 인스턴스입니다.</param>
+        /// <param name="useDontDestroyOnLoad">씬 로드 시 싱글톤이 삭제되지 않도록 표시할지 여부를 나타내는 플래그입니다.</param>
         /// <returns>Nothing.</returns>
         public static void Create(SelfSingleton.Singleton singleton, bool useDontDestroyOnLoad)
         {
@@ -211,7 +211,7 @@ namespace USingleton
         }
 
         /// <summary>
-        /// Releases the specified singleton instance.
+        /// 지정된 싱글톤 인스턴스를 해제합니다.
         /// </summary>
         /// <typeparam name="T">The type of the singleton.</typeparam>
         /// <param name="singleton">The singleton instance to release.</param>
@@ -228,10 +228,10 @@ namespace USingleton
     {
         // ReSharper disable Unity.PerformanceAnalysis
         /// <summary>
-        /// Returns an instance of the specified generic type T if it exists in the Managers dictionary. Otherwise, returns null.
+        /// Managers 사전에 있는 경우 지정된 일반 유형 T의 인스턴스를 반환합니다. 그렇지 않으면 null을 반환합니다.
         /// </summary>
-        /// <typeparam name="T">The type of the MonoBehaviour instance to retrieve</typeparam>
-        /// <returns>An instance of the specified generic type T if found in the Managers dictionary. Otherwise, returns null.</returns>
+        /// <typeparam name="T">검색할 MonoBehaviour 인스턴스의 유형</typeparam>
+        /// <returns>Managers 사전에 있는 경우 지정된 일반 유형 T의 인스턴스입니다. 그렇지 않으면 null을 반환합니다.</returns>
         public static T Instance<T>() where T : MonoBehaviour
         {
             // If there is a manager
@@ -253,10 +253,10 @@ namespace USingleton
         }
 
         /// <summary>
-        /// Determines whether an instance of the specified type exists in the SingletonManager.
+        /// SingletonManager에 지정된 유형의 인스턴스가 있는지 여부를 확인합니다.
         /// </summary>
-        /// <typeparam name="T">The type of the MonoBehaviour instance to check.</typeparam>
-        /// <returns>true if an instance of the specified type exists in the SingletonManager, otherwise false.</returns>
+        /// <typeparam name="T">확인할 MonoBehaviour 인스턴스의 유형입니다.</typeparam>
+        /// <returns>지정된 유형의 인스턴스가 SingletonManager에 있으면 true이고, 그렇지 않으면 false입니다.</returns>
         public static bool HasInstance<T>() where T : MonoBehaviour
         {
             return SingletonManager.Managers.ContainsKey(typeof(T));

@@ -18,7 +18,7 @@ using UnityEditor.AddressableAssets.Settings;
 namespace USingleton.AutoSingleton
 {
     /// <summary>
-    /// Generic access class for singleton instances.
+    /// 싱글톤 인스턴스에 대한 일반 액세스 클래스입니다.
     /// </summary>
     public static class Singleton
     {
