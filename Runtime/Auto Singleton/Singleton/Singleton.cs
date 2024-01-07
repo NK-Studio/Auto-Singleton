@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using System.Reflection;
 
-#if AUTO_SINGLETON_USE_ADDRESSABLE
+#if USE_ADDRESSABLES && USINGLETON_USE_ADDRESSABLE
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceLocations;

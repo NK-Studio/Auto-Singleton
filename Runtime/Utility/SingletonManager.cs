@@ -6,7 +6,7 @@ using System.Reflection;
 using USingleton.AutoSingleton;
 using Object = UnityEngine.Object;
 
-#if AUTO_SINGLETON_USE_ADDRESSABLE
+#if USE_ADDRESSABLES && USINGLETON_USE_ADDRESSABLE
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceLocations;
@@ -61,10 +61,10 @@ namespace USingleton
 
             string[] exclusionList = AutoSingletonSettings.CurrentSettings.ExcludedManagers;
 
-            if (AutoSingletonSettings.CurrentSettings.ShowDebugCustomManager)
+            if (AutoSingletonSettings.CurrentSettings.ShowDebugLog)
                 Debug.Log("모든 매니저 초기화 중 ...");
 
-#if AUTO_SINGLETON_USE_ADDRESSABLE && UNITY_EDITOR
+#if USE_ADDRESSABLES && USINGLETON_USE_ADDRESSABLE && UNITY_EDITOR
             AddressableAssetGroup targetGroup = AddressableAssetSettingsDefaultObject.Settings.FindGroup("Manager");
 #endif
 
@@ -73,7 +73,7 @@ namespace USingleton
                 // 제외 목록에 있는지 확인
                 if (exclusionList != null && exclusionList.ToList().Contains(type.Name))
                 {
-                    if (AutoSingletonSettings.CurrentSettings.ShowDebugCustomManager)
+                    if (AutoSingletonSettings.CurrentSettings.ShowDebugLog)
                         Debug.Log(
                             $"매니저 : {type.Name}가 Auto Singleton Settings에 excludedManagers리스트에 있습니다. 생성을 무시합니다.");
                     continue;
@@ -81,13 +81,13 @@ namespace USingleton
 
                 // 해당 매니저의 어트리뷰트의 내용을 가져온다.
                 var attribute = type.GetCustomAttribute<SingletonAttribute>();
-
+ 
                 if (attribute != null)
                 {
                     // Resources 폴더 방식
                     if (!attribute.UseAddressable)
                     {
-                        GameObject prefab = Resources.Load<GameObject>(attribute.PrefabName);
+                        GameObject prefab = Resources.Load<GameObject>($"Managers/{attribute.PrefabName}");
 
                         // 리소스 폴더에 존재할 경우
                         if (prefab != null)
@@ -106,17 +106,17 @@ namespace USingleton
                             Managers.Add(type, comp);
 
                             // 디버그 메세지 출력
-                            if (AutoSingletonSettings.CurrentSettings.ShowDebugCustomManager)
+                            if (AutoSingletonSettings.CurrentSettings.ShowDebugLog)
                                 Debug.Log($" -> {type.Name} 생성 완료");
                         }
                         else
                         {
-                            if (AutoSingletonSettings.CurrentSettings.ShowDebugCustomManager)
+                            if (AutoSingletonSettings.CurrentSettings.ShowDebugLog)
                                 Debug.LogError(
                                     $"{type}를 생성 할 수 없습니다. '{attribute.PrefabName}'프리팹을 찾을 수 없습니다.");
                         }
                     }
-#if AUTO_SINGLETON_USE_ADDRESSABLE
+#if USE_ADDRESSABLES && USINGLETON_USE_ADDRESSABLE
                     // Addressable 방식
                     else
                     {
@@ -148,12 +148,12 @@ namespace USingleton
                             Managers.Add(type, comp);
 
                             // 디버그 메세지 출력
-                            if (AutoSingletonSettings.CurrentSettings.ShowDebugCustomManager)
+                            if (AutoSingletonSettings.CurrentSettings.ShowDebugLog)
                                 Debug.Log($" -> {type.Name} 생성 완료");
                         }
                         else
                         {
-                            if (AutoSingletonSettings.CurrentSettings.ShowDebugCustomManager)
+                            if (AutoSingletonSettings.CurrentSettings.ShowDebugLog)
                                 Debug.LogError(
                                     $"{type}를 생성 할 수 없습니다. '{attribute.PrefabName}'프리팹을 찾을 수 없습니다.");
                         }
@@ -210,7 +210,7 @@ namespace USingleton
             if (SingletonManager.Managers.ContainsKey(typeof(T)))
                 return (T)SingletonManager.Managers[typeof(T)];
 
-            if (AutoSingletonSettings.CurrentSettings.ShowDebugCustomManager)
+            if (AutoSingletonSettings.CurrentSettings.ShowDebugLog)
                 Debug.LogError($"매니저 : '{typeof(T)}'가 액세스 되지 않았습니다. Auto Singleton Settings에서 해당 매니저가 제외됬는지 확인해주세요.");
 
             return null;
@@ -225,7 +225,7 @@ namespace USingleton
         {
             return SingletonManager.Managers.ContainsKey(typeof(T));
         }
-        
+
         // ReSharper disable Unity.PerformanceAnalysis
         /// <summary>
         /// Tries to get an instance of type T from the SingletonManager.
@@ -236,14 +236,14 @@ namespace USingleton
         public static bool TryGetInstance<T>(out T instance) where T : MonoBehaviour
         {
             Type typeOfT = typeof(T);
-            
+
             if (SingletonManager.Managers.TryGetValue(typeOfT, out MonoBehaviour manager))
             {
                 instance = (T)manager;
                 return true;
             }
 
-            if (AutoSingletonSettings.CurrentSettings.ShowDebugCustomManager)
+            if (AutoSingletonSettings.CurrentSettings.ShowDebugLog)
             {
                 Debug.LogError($"Manager: '{typeOfT}' has not been accessed. Please check if this manager has been excluded in Auto Singleton Settings.");
             }

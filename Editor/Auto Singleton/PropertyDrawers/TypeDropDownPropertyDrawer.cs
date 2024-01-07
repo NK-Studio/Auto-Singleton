@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 using UnityEditor;
+using USingleton;
 using USingleton.AutoSingleton;
 
 namespace AutoSingleton

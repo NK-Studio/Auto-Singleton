@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:GroupBox text="Manager">
+        <ui:IMGUIContainer name="List-Container" />
+    </ui:GroupBox>
+    <ui:GroupBox text="Addressable (Experimental)" name="groupBox-addressable">
+        <uie:PropertyField binding-path="useAddressable" name="propertyField-addressable" />
+    </ui:GroupBox>
+    <ui:GroupBox text="Debug">
+        <uie:PropertyField binding-path="showDebugLog" name="propertyField-ShowDebugLog" />
+    </ui:GroupBox>
+</ui:UXML>

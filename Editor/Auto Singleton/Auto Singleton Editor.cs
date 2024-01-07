@@ -3,191 +3,206 @@ using System.Collections.Generic;
 using System.Reflection;
 using AutoSingleton;
 using UnityEditor;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 using USingleton;
 using USingleton.AutoSingleton;
 using Object = UnityEngine.Object;
 
-#if AUTO_SINGLETON_USE_ADDRESSABLE
+#if USE_ADDRESSABLES && USINGLETON_USE_ADDRESSABLE
 using UnityEditor.AddressableAssets;
 using UnityEditor.AddressableAssets.Settings;
 using UnityEditor.AddressableAssets.Settings.GroupSchemas;
 #endif
 
-[CustomEditor(typeof(AutoSingletonSettings))]
-public class AutoSingletonEditor : Editor
+namespace AutoSingleton
 {
-    private VisualTreeAsset visualTreeAsset;
-    private StyleSheet styleSheet;
-
-    private VisualElement _root;
-
-    private SerializedProperty _excludedManagers;
-
-    private const string AddressableDefine = "AUTO_SINGLETON_USE_ADDRESSABLE";
-
-    public override VisualElement CreateInspectorGUI()
+    [CustomEditor(typeof(AutoSingletonSettings))]
+    public class AutoSingletonEditor : Editor
     {
-        // Load
-        string uxmlPath = AssetDatabase.GUIDToAssetPath("2919b6e2c8bd549508a9ec7307076390");
-        visualTreeAsset = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(uxmlPath);
-        
-        string ussPath = AssetDatabase.GUIDToAssetPath("2174863b709254c95ac78e9e9c5f06a1");
-        styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(ussPath);
+        private VisualTreeAsset visualTreeAsset;
+        private StyleSheet styleSheet;
 
-        // Apply
-        _root = visualTreeAsset.CloneTree();
-        _root.styleSheets.Add(styleSheet);
+        private VisualElement _root;
 
-        var listContainer = _root.Q<IMGUIContainer>("List-Container");
+        private SerializedProperty _excludedManagers;
 
-        _excludedManagers = serializedObject.FindProperty("excludedManagers");
-
-        listContainer.onGUIHandler = () => {
-            EditorGUILayout.PropertyField(_excludedManagers);
-            serializedObject.ApplyModifiedProperties();
-        };
-
-        return _root;
-    }
-
-    [MenuItem("Tools/Auto Singleton/Refresh")]
-    private static void ForceRefresh()
-    {
-        Type[] allManagerTypes = SingletonManager.GetAllSingletonTypes();
-
-        foreach (Type type in allManagerTypes)
+        public override VisualElement CreateInspectorGUI()
         {
-            var attribute = type.GetCustomAttribute<SingletonAttribute>();
+            // Load
+            string uxmlPath = AssetDatabase.GUIDToAssetPath("18e07ed21749147c69cb3a3e3195a9a1");
+            visualTreeAsset = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(uxmlPath);
 
-            if (attribute != null)
-            {
-                string path = string.Empty;
+            string ussPath = AssetDatabase.GUIDToAssetPath("2174863b709254c95ac78e9e9c5f06a1");
+            styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(ussPath);
 
-                if (!attribute.UseAddressable)
-                {
-                    // 파일이 존재하는지 체크
-                    path = "/Resources/" + type.Name + ".prefab";
+            // Apply
+            _root = visualTreeAsset.CloneTree();
+            _root.styleSheets.Add(styleSheet);
 
-                    // Resources 폴더가 없으면 생성합니다.
-                    if (!AssetDatabase.IsValidFolder("Assets/Resources"))
-                        AssetDatabase.CreateFolder("Assets", "Resources");
-                }
-#if AUTO_SINGLETON_USE_ADDRESSABLE
-                else
-                {
-                    // 파일이 존재하는지 체크
-                    path = "/Managers/Prefabs/" + type.Name + ".prefab";
+            var listContainer = _root.Q<IMGUIContainer>("List-Container");
 
-                    // Resources 폴더가 없으면 생성합니다.
-                    if (!AssetDatabase.IsValidFolder("Assets/Managers"))
-                        AssetDatabase.CreateFolder("Assets", "Managers");
+            _excludedManagers = serializedObject.FindProperty("excludedManagers");
 
-                    if (!AssetDatabase.IsValidFolder("Assets/Managers/Prefabs"))
-                        AssetDatabase.CreateFolder("Assets/Managers", "Prefabs");
-                }
+            PropertyField addressableToggle = _root.Q<PropertyField>("propertyField-addressable");
+
+            addressableToggle.tooltip = Application.systemLanguage switch {
+                SystemLanguage.Korean => "Resources 폴더가 아닌 Addressable Asset System을 활용하여 싱글턴을 활성화할 수 있는 기능을 제공합니다.",
+                _ => "Provides the ability to activate singletons using the Addressable Asset System instead of the Resources folder."
+            };
+
+#if !USE_ADDRESSABLES
+            var addresableGroupBox = _root.Q<GroupBox>("groupBox-addressable");
+            addresableGroupBox.style.display = DisplayStyle.None;
 #endif
 
-                if (!System.IO.File.Exists(Application.dataPath + path))
+            listContainer.onGUIHandler = () => {
+                EditorGUILayout.PropertyField(_excludedManagers);
+                serializedObject.ApplyModifiedProperties();
+            };
+
+            listContainer.tooltip = Application.systemLanguage switch {
+                SystemLanguage.Korean => "자동으로 생성하지 않을 싱글턴 매니저의 이름을 등록합니다.",
+                _ => "Register the name of the singleton manager that will not be automatically created."
+            };
+
+            PropertyField showDebugLogToggle = _root.Q<PropertyField>("propertyField-ShowDebugLog");
+            showDebugLogToggle.tooltip = Application.systemLanguage switch {
+                SystemLanguage.Korean => "싱글턴 객체를 생성할 때 생성되었는지 로그를 출력합니다.",
+                _ => "Prints a log when a singleton object is created."
+            };
+
+            return _root;
+        }
+
+        [MenuItem("Tools/USingleton/Refresh")]
+        private static void ForceRefresh()
+        {
+            Type[] allManagerTypes = SingletonManager.GetAllSingletonTypes();
+
+            foreach (Type type in allManagerTypes)
+            {
+                var attribute = type.GetCustomAttribute<SingletonAttribute>();
+
+                if (attribute != null)
                 {
-                    // 없으면 생성
-                    GameObject prefab = new GameObject(type.Name);
-                    prefab.AddComponent(type);
+                    string path = string.Empty;
 
-                    // 프리팹 생성
-                    PrefabUtility.SaveAsPrefabAsset(prefab, $"Assets{path}");
-
-#if AUTO_SINGLETON_USE_ADDRESSABLE
-                    // 추가적인 어드레서블 처리
-                    if (attribute.UseAddressable)
+                    // 생성 안함
+                    if (attribute.DoNotCreate)
                     {
-                        // Addressable 주소 설정
-                        AddressableAssetGroup targetGroup = AddressableAssetSettingsDefaultObject.Settings.FindGroup("Manager");
+                        Debug.Log($"{type.Name} : 디버그로 인하여 생성되지 않았습니다.");
+                        continue;
+                    }
+                    
+                    // Resources 폴더에 생성
+                    if (!attribute.UseAddressable)
+                    {
+                        // 파일이 존재하는지 체크
+                        path = "/Resources/Managers/" + type.Name + ".prefab";
 
-                        if (!targetGroup)
-                        {
-                            targetGroup = targetGroup.Settings.CreateGroup("Manager", false, false, false, null,
-                                typeof(BundledAssetGroupSchema));
-                        }
+                        // Resources 폴더가 없으면 생성합니다.
+                        if (!AssetDatabase.IsValidFolder("Assets/Resources"))
+                            AssetDatabase.CreateFolder("Assets", "Resources");
 
-                        //생성한 프리팹을 다시 로드해서 가져옵니다.
-                        Object target = AssetDatabase.LoadAssetAtPath<Object>($"Assets{path}");
+                        // Resources/Managers 폴더가 없으면 생성합니다.
+                        if (!AssetDatabase.IsValidFolder("Assets/Resources/Managers"))
+                            AssetDatabase.CreateFolder("Assets/Resources", "Managers");
+                    }
+#if USE_ADDRESSABLES && USINGLETON_USE_ADDRESSABLE
+                    else
+                    {
+                        // 파일이 존재하는지 체크
+                        path = "/Managers/Prefabs/" + type.Name + ".prefab";
 
-                        string assetPath = AssetDatabase.GetAssetPath(target);
-                        string assetGUID = AssetDatabase.AssetPathToGUID(assetPath);
+                        // Resources 폴더가 없으면 생성합니다.
+                        if (!AssetDatabase.IsValidFolder("Assets/Managers"))
+                            AssetDatabase.CreateFolder("Assets", "Managers");
 
-                        var e = targetGroup.Settings.CreateOrMoveEntry(assetGUID, targetGroup, false, false);
-                        e.address = type.Name;
-                        var entriesAdded = new List<AddressableAssetEntry> { e };
-
-                        targetGroup.SetDirty(AddressableAssetSettings.ModificationEvent.EntryMoved, entriesAdded, false, true);
-                        targetGroup.Settings.SetDirty(AddressableAssetSettings.ModificationEvent.EntryMoved, entriesAdded, true, false);
-
+                        if (!AssetDatabase.IsValidFolder("Assets/Managers/Prefabs"))
+                            AssetDatabase.CreateFolder("Assets/Managers", "Prefabs");
                     }
 #endif
 
-                    // 프리팹을 만들기 위해 씬에 배치한 임시 프리팹을 삭제한다.
-                    DestroyImmediate(prefab);
+                    if (!System.IO.File.Exists(Application.dataPath + path))
+                    {
+                        // 없으면 생성
+                        GameObject prefab = new GameObject(type.Name);
+                        prefab.AddComponent(type);
+
+                        // 프리팹 생성
+                        PrefabUtility.SaveAsPrefabAsset(prefab, $"Assets{path}");
+
+#if USE_ADDRESSABLES && USINGLETON_USE_ADDRESSABLE
+                        // 추가적인 어드레서블 처리
+                        if (attribute.UseAddressable)
+                        {
+                            // Addressable 주소 설정
+                            AddressableAssetSettings targetSetting = AddressableAssetSettingsDefaultObject.GetSettings(true);
+
+                            AddressableAssetGroup targetGroup = targetSetting.FindGroup("Manager");
+
+                            if (!targetGroup)
+                            {
+                                targetGroup = targetSetting.CreateGroup("Manager", false, false, false, null,
+                                    typeof(BundledAssetGroupSchema));
+                            }
+
+                            //생성한 프리팹을 다시 로드해서 가져옵니다.
+                            Object target = AssetDatabase.LoadAssetAtPath<Object>($"Assets{path}");
+
+                            string assetPath = AssetDatabase.GetAssetPath(target);
+                            string assetGUID = AssetDatabase.AssetPathToGUID(assetPath);
+
+                            var e = targetSetting.CreateOrMoveEntry(assetGUID, targetGroup, false, false);
+                            e.address = type.Name;
+                            var entriesAdded = new List<AddressableAssetEntry> { e };
+
+                            targetGroup.SetDirty(AddressableAssetSettings.ModificationEvent.EntryMoved, entriesAdded, false, true);
+                            targetSetting.SetDirty(AddressableAssetSettings.ModificationEvent.EntryMoved, entriesAdded, true, false);
+
+                        }
+#endif
+
+                        // 프리팹을 만들기 위해 씬에 배치한 임시 프리팹을 삭제한다.
+                        DestroyImmediate(prefab);
+                    }
                 }
             }
+
+            // 새로고침
+            AssetDatabase.Refresh();
         }
-
-        // 새로고침
-        AssetDatabase.Refresh();
-    }
-
-    [MenuItem("Tools/Auto Singleton/Settings")]
-    private static void OpenSettings()
-    {
-        var settings = AutoSingletonSettings.CurrentSettings;
-        Selection.activeObject = settings;
-    }
-
-    [MenuItem("Tools/Auto Singleton/Use Addressable")]
-    private static void UseAddressable()
-    {
-        var menuPath = "Tools/Auto Singleton/Use Addressable";
-        var checkFlag = Menu.GetChecked(menuPath);
-        var nextFlag = !checkFlag;
-        Menu.SetChecked(menuPath, nextFlag);
-
-        BuildTargetGroup buildTargetGroup = EditorUserBuildSettings.selectedBuildTargetGroup;
-
-        if (nextFlag)
-        {
-            string defines = PlayerSettings.GetScriptingDefineSymbolsForGroup(buildTargetGroup);
-            defines += $";{AddressableDefine}";
-            PlayerSettings.SetScriptingDefineSymbolsForGroup(buildTargetGroup, defines);
-        }
-        else
-        {
-            string defines = PlayerSettings.GetScriptingDefineSymbolsForGroup(buildTargetGroup);
-            defines = defines.Replace(AddressableDefine, "");
-            PlayerSettings.SetScriptingDefineSymbolsForGroup(buildTargetGroup, defines);
-        }
-    }
-
-    [MenuItem("Tools/Auto Singleton/About", false, 2000)]
-    private static void About()
-    {
-        var path = AssetDatabase.GUIDToAssetPath("dd38d53d7bf7b40fa960de2e03525ea4");
-        var packageJson = AssetDatabase.LoadAssetAtPath<TextAsset>(path);
-        PackageInfo info = JsonUtility.FromJson<PackageInfo>(packageJson.text);
         
-        Debug.Log($"USingleton v{info.version}");
+        [MenuItem("Tools/USingleton/Settings")]
+        private static void OpenSettings()
+        {
+            var settings = AutoSingletonSettings.CurrentSettings;
+            Selection.activeObject = settings;
+        }
+
+        [MenuItem("Tools/USingleton/About", false, 2000)]
+        private static void About()
+        {
+            var path = AssetDatabase.GUIDToAssetPath("dd38d53d7bf7b40fa960de2e03525ea4");
+            var packageJson = AssetDatabase.LoadAssetAtPath<TextAsset>(path);
+            PackageInfo info = JsonUtility.FromJson<PackageInfo>(packageJson.text);
+
+            Debug.Log($"USingleton v{info.version}");
+        }
+
+        [Serializable]
+        internal class PackageInfo
+        {
+            public string name;
+            public string displayName;
+            public string version;
+            public string unity;
+            public string description;
+            public List<string> keywords;
+            public string type;
+        }
+        
     }
-    
-    [Serializable]
-    internal class PackageInfo
-    {
-        public string name;
-        public string displayName;
-        public string version;
-        public string unity;
-        public string description;
-        public List<string> keywords;
-        public string type;
-    }
-    
 }
