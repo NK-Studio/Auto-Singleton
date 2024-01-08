@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title> | USingleton </title>
+      <title>Addressable Asset System 지원 | USingleton </title>
       <meta name="viewport" content="width=device-width">
-      <meta name="title" content=" | USingleton ">
+      <meta name="title" content="Addressable Asset System 지원 | USingleton ">
     
       <link rel="shortcut icon" href="../favicon.ico">
       <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -75,24 +75,58 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
+<h1 id="addressable-asset-system-지원">Addressable Asset System 지원</h1>
 
-<p>MIT License</p>
-<p>Copyright (c) 2023 NK Studio</p>
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the &quot;Software&quot;), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:</p>
-<p>The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.</p>
-<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.</p>
+<p>이 라이브러리는 Resources 폴더에 의존하고 있습니다.<br>
+만약, Resources 폴더 사용하는 것에 부담이 있다면, Addressable Asset System을 사용할 수 있습니다.</p>
+<div class="CAUTION">
+<h5>Caution</h5>
+<p>이 기능은 Auto Singleton에만 지원됩니다.</p>
+</div>
+<hr>
+<h2 id="addressable-asset-system-기능-활성화하기">Addressable Asset System 기능 활성화하기</h2>
+<p><img src="../images/Image06.png" alt="image06"><br>
+Window -&gt; Package Manager에서 Addressable Asset System을 설치합니다.</p>
+<p><img src="../images/Image07.png" alt="image07"><br>
+유니티 상단에 Tools -&gt; USingleton -&gt; Settings를 클릭한 다음, <u><strong>Use Addressable 옵션을 체크</strong></u>합니다.</p>
+<h2 id="코드-수정하기">코드 수정하기</h2>
+<pre><code class="lang-csharp" highlight-lines="4">using UnityEngine;
+using USingleton.AutoSingleton;
+
+[Singleton(&quot;GameManager&quot;, useAddressable: true)]
+public class GameManager : MonoBehaviour
+{
+}
+</code></pre>
+<p>Singleton Attribute의 <strong>두번째 인자에 true를 지정</strong>합니다.</p>
+<h2 id="프리팹-생성하기">프리팹 생성하기</h2>
+<p><img src="../images/Image01.png" alt="Image01">
+Tools -&gt; USingleton -&gt; Refresh을 클릭합니다.</p>
+<p><img src="../images/Image08.png" alt="Image08"><br>
+Manager 폴더에 자동으로 프리팹이 생성됩니다.<br>
+(프리팹 이름과 어드레서블 에셋 주소는 Singleton 어트리뷰트에 부여한 이름과 동일합니다.)</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>기존에 Resources 폴더에 생성된 프리팹이 있다면, <strong>삭제</strong>하고 <strong>다시 생성하는 것을 권장</strong>합니다.</p>
+</div>
+<h2 id="접근-하기">접근 하기</h2>
+<pre><code class="lang-csharp" highlight-lines="2,8">using UnityEngine;
+using USingleton;
+
+public class TestCode : MonoBehaviour
+{
+    private void Start()
+    {
+        Singleton.Instance&lt;GameManager&gt;().HP = 100;
+    }
+}
+</code></pre>
+<p>다음과 같이 작성하여 접근할 수 있습니다.</p>
+<h2 id="주의">주의</h2>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>Addressable Asset System 지원은 현재 <strong>실험적인 기능</strong>입니다, 지속적인 피드백을 남겨주시면 감사하겠습니다.</p>
+</div>
 </article>
           </div>
 
@@ -100,6 +134,9 @@ SOFTWARE.</p>
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/NK-Studio/USingleton/blob/Document/manual/Addressable.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">

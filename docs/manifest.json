@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "/Users/nkstudio/Desktop/USingleton Document",
+  "source_base_path": "/Users/nkstudio/Desktop/USingleton",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -210,7 +210,7 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "/8RcbQ22gYC+IApS1jPxhYQuDi7aIP02+ynu0ox2cYQ="
+          "hash": "jK8Jpei2MO2aMkkKmMU8rMK2W6/wD6UvxcLbQM6DXVk="
         }
       },
       "is_incremental": false,
@@ -466,7 +466,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "FutTOTg6VIRCTFXyUIA6zIjy5P1YFsfAYLfoSmrCDsw="
+          "hash": "NUWa0b8shAderGoG76tI+SmF6YB9MeUiiOmo5Cko6PY="
         }
       },
       "is_incremental": false,
@@ -478,7 +478,7 @@
       "output": {
         ".html": {
           "relative_path": "license/LICENSE.html",
-          "hash": "J2ytBhrXsYW3t5oap21fq4QQeecPOaG8SAUM8XYSPY4="
+          "hash": "WyYPCS7WRVPJ5Z2tr7d3gCENbZ0bUpaiZQSf560oZxw="
         }
       },
       "is_incremental": false,
@@ -502,7 +502,7 @@
       "output": {
         ".html": {
           "relative_path": "manual/Additional.html",
-          "hash": "OJreTVFvm7BSA5aw/gkXhmPR/diQuMlwQX8LNccOqgo="
+          "hash": "cSy6n2pBve+VA53ndqyeeErpqc+y8ay88U4f7JT5ftk="
         }
       },
       "is_incremental": false,
@@ -514,7 +514,7 @@
       "output": {
         ".html": {
           "relative_path": "manual/Addressable.html",
-          "hash": "XBNPY2hP6mmI2c8yRVkdJlwfnjnCegMcPI9LFeawPH8="
+          "hash": "L0VBuIA0G53DX4xbdhQaKL+MCyx4Wu2K2FcF01v+aI8="
         }
       },
       "is_incremental": false,
@@ -526,7 +526,7 @@
       "output": {
         ".html": {
           "relative_path": "manual/AutoSingleton.html",
-          "hash": "nZ48BMcIPYyYhBcKmEXCheJiYRO1b09Wa7pJBjJxw88="
+          "hash": "jx2S5MPkmCaB//cIJRzsfO0rarI+rL8a4O/yK1LUxG0="
         }
       },
       "is_incremental": false,
@@ -538,7 +538,7 @@
       "output": {
         ".html": {
           "relative_path": "manual/Installation.html",
-          "hash": "+1DLeBwcf741UjkSLutNTUAZTJrdxdNCqLRunNmpT7s="
+          "hash": "TkFObWYva3JaHciYWhVcf+mO5uJEq282LRODyiZx4Vw="
         }
       },
       "is_incremental": false,
@@ -550,7 +550,7 @@
       "output": {
         ".html": {
           "relative_path": "manual/Messager.html",
-          "hash": "SkWyUy/iAITocY1mHUe6ubgl52ohXzM+W0aKbAGoifI="
+          "hash": "pOlJ2Phfdjz1NlvZrUYn8Kbm2jmWeW4F8j+0BqZSLLU="
         }
       },
       "is_incremental": false,
@@ -562,7 +562,7 @@
       "output": {
         ".html": {
           "relative_path": "manual/SelfSingleton.html",
-          "hash": "5yJR2kayIU5F9tRZB4SgqA3n44S690/7CkyNA4aFDIA="
+          "hash": "YSuqbRs1e0SNr0UuEqljeFYMlZrDze73HG8d/4ydd6A="
         }
       },
       "is_incremental": false,
@@ -574,7 +574,7 @@
       "output": {
         ".html": {
           "relative_path": "manual/Settings.html",
-          "hash": "MrWG1sZxtj/WkChORIcO3JKz4459dKS9Y99D0y4udHM="
+          "hash": "JdrBs5mLCvh3RqIvzw/bNJhUl6ALShjC2LIIg3tfH00="
         }
       },
       "is_incremental": false,
@@ -586,7 +586,7 @@
       "output": {
         ".html": {
           "relative_path": "manual/index.html",
-          "hash": "TsxhJW5GuIS1Is8DM1cM0xCjS8d5XprkemiIqXb9JoA="
+          "hash": "hRy0CTe2Afw2p3YLDzMxFaRp4z26OaiTD+dv7c5AI6g="
         }
       },
       "is_incremental": false,

@@ -69,11 +69,11 @@
         ],
         "exclude": [
           "obj/**",
-          "USingleton/**"
+          "docs/**"
         ]
       }
     ],
-    "dest": "USingleton",
+    "dest": "docs",
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
     "template": [

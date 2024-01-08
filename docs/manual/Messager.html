@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title>USingleton | USingleton </title>
+      <title>Messager | USingleton </title>
       <meta name="viewport" content="width=device-width">
-      <meta name="title" content="USingleton | USingleton ">
+      <meta name="title" content="Messager | USingleton ">
     
       <link rel="shortcut icon" href="../favicon.ico">
       <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -75,59 +75,127 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="usingleton">USingleton</h1>
+<h1 id="messager">Messager</h1>
 
-<p>싱글턴 패턴에 대하여 자동 기능이 탑재된 패키지입니다.</p>
-<h1 id="소개">소개</h1>
-<p>USingleton은 유니티 개발에서 자주 사용하는 <strong>Singleton 패턴을 빠르게 빌드업할 수 있도록 도와주는 패키지</strong>입니다.</p>
-<p>이 패키지는 <strong>두가지 스타일</strong>의 Singleton 방식을 지원합니다.</p>
-<ul>
-<li>Auto Singleton</li>
-<li>Self Singleton</li>
-</ul>
-<h3 id="auto-singleton">Auto Singleton</h3>
-<p>Auto Singleton은 클래스에 <code>Singleton</code> 어트리뷰트를 부여하면 자동으로 싱글턴 패턴을 적용해주는 기능입니다.<br>
-또한, <strong>런타임시 자동으로 생성되는 기능을 지원</strong>합니다.</p>
-<h3 id="self-singleton">Self Singleton</h3>
-<p>Self Singleton은 <code>Singleton</code> 클래스를 상속하여 싱글턴 패턴을 적용해주는 기능입니다.<br>
-일반적으로 <strong>런타임시 자동으로 생성되지 않습니다.</strong> 만약, <strong>해당 Singleton 인스턴스가 요구될 경우 Resources 폴더에서 자동 생성되는 처리가 동작</strong>합니다.</p>
-<h1 id="auto-singleton-vs-self-singleton">Auto Singleton VS Self Singleton</h1>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;"></th>
-<th style="text-align: center;">Auto Singleton</th>
-<th style="text-align: center;">Self Singleton</th>
-<th style="text-align: center;">비고</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;">런타임시 자동 생성</td>
-<td style="text-align: center;">O</td>
-<td style="text-align: center;">△</td>
-<td style="text-align: center;">Self Singleton은 인스턴스 요구시,<br>Resources에서 로드되어 생성됩니다.</td>
-</tr>
-<tr>
-<td style="text-align: center;">Resources 폴더에서 로드</td>
-<td style="text-align: center;">△</td>
-<td style="text-align: center;">O</td>
-<td style="text-align: center;">Auto Singleton은 Addressable Asset System을 제공하여 Resource폴더가 아니더라도 동작시킬 수 있습니다.</td>
-</tr>
-<tr>
-<td style="text-align: center;">DontDestroyOnLoad 재정의</td>
-<td style="text-align: center;">X</td>
-<td style="text-align: center;">O</td>
-<td style="text-align: center;"></td>
-</tr>
-</tbody>
-</table>
-<div class="NOTE">
-<h5>Note</h5>
-<p>Auto Singleton은 어플리케이션이 실행되는 동안 계속 살아있는 싱글턴 객체를 만들고 싶을 때 사용하는 패턴입니다.</p>
-<p>Self Singleton은 유동적으로 동작할 수 있으며, DontDestroyOnLoad를 재정의하여 씬이 변경되면 파괴되도록 할 수 있습니다.</p>
-<p>일반적으로는 Auto Singleton을 사용하며, DontDestroyOnLoad를 재정의하여 씬이 변경되면 파괴되도록 하고 싶다면 Self Singleton을 사용하는 것을 추천합니다.</p>
-</div>
+<p>Messager 기능은 유니티의 SendMessage와 비슷한 기능을 제공합니다.<br>
+다만, SendMessage는 계층 구조의 모든 오브젝트를 검사하는 반면, Messager는 관리되는 Dictionary에 등록한 메세지를 검사하여 성능 부분에서 월등합니다.</p>
+<hr>
+<h1 id="시작해요">시작해요</h1>
+<h2 id="전체-코드">전체 코드</h2>
+<p>예시를 위해 두 가지 클래스를 작성해보겠습니다.</p>
+<pre><code class="lang-csharp">using UnityEngine;
+using USingleton.Utility;
+
+public class ScreenEffect : MonoBehaviour
+{
+    private void Awake()
+    {
+        // 동작을 등록합니다.
+        Messager.RegisterMessage(&quot;FadeIn&quot;, FadeIn);
+        Messager.RegisterMessage(&quot;FadeOut&quot;, FadeOut);
+    }
+
+    /// &lt;summary&gt;
+    /// 개체가 페이드 인됩니다.
+    /// &lt;/summary&gt;
+    public void FadeIn()
+    {
+        Debug.Log(&quot;FadeIn&quot;);
+    }
+
+    /// &lt;summary&gt;
+    /// 현재 개체를 페이드 아웃합니다.
+    /// &lt;/summary&gt;
+    public void FadeOut()
+    {
+        Debug.Log(&quot;FadeOut&quot;);
+    }
+
+    private void OnDestroy()
+    {
+        // 등록된 동작을 제거합니다.
+        Messager.RemoveMessage(&quot;FadeIn&quot;);
+        Messager.RemoveMessage(&quot;FadeOut&quot;);
+    }
+}
+</code></pre><pre><code class="lang-csharp">using UnityEngine;
+using USingleton.Utility;
+
+public class TestCode : MonoBehaviour
+{
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Messager.Send(&quot;FadeIn&quot;);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            Messager.Send(&quot;FadeOut&quot;);
+        }
+    }
+}
+</code></pre><h2 id="등록하기">등록하기</h2>
+<pre><code class="lang-csharp" highlight-lines="2,8-9">using UnityEngine;
+using USingleton.Utility;
+
+public class ScreenEffect : MonoBehaviour
+{
+    private void Awake()
+    {
+        Messager.RegisterMessage(&quot;FadeIn&quot;, FadeIn);
+        Messager.RegisterMessage(&quot;FadeOut&quot;, FadeOut);
+    }
+    
+    public void FadeIn()
+    {
+        Debug.Log(&quot;FadeIn&quot;);
+    }
+
+    public void FadeOut()
+    {
+        Debug.Log(&quot;FadeOut&quot;);
+    }
+}
+</code></pre>
+<p>다음과 같이 작성하여 Awake에서 등록 작업을 수행합니다.</p>
+<h2 id="해제하기">해제하기</h2>
+<pre><code class="lang-csharp" highlight-lines="2,9,10">using UnityEngine;
+using USingleton.Utility;
+
+public class ScreenEffect : MonoBehaviour
+{
+    private void OnDestroy()
+    {
+        // 등록된 동작을 제거합니다.
+        Messager.RemoveMessage(&quot;FadeIn&quot;);
+        Messager.RemoveMessage(&quot;FadeOut&quot;);
+    }
+}
+</code></pre>
+<p>다음과 같이 작성하여 OnDestroy에서 해제 작업을 수행합니다.</p>
+<h2 id="메세지-보내기">메세지 보내기</h2>
+<pre><code class="lang-csharp" highlight-lines="2,10,15">using UnityEngine;
+using USingleton.Utility;
+
+public class TestCode : MonoBehaviour
+{
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Messager.Send(&quot;FadeIn&quot;);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            Messager.Send(&quot;FadeOut&quot;);
+        }
+    }
+}
+</code></pre>
+<p>다음과 같이 작성하여 메세지를 보낼 수 있습니다.</p>
 </article>
           </div>
 
@@ -135,6 +203,9 @@
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/NK-Studio/USingleton/blob/Document/manual/Messager.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
