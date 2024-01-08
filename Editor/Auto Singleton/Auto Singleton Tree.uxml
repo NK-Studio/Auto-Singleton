@@ -1,9 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:GroupBox text="Addressable (Experimental)" name="groupBox-addressable">
-        <uie:PropertyField binding-path="useAddressable" name="propertyField-addressable" />
-    </ui:GroupBox>
-    <ui:GroupBox text="Debug">
-        <ui:IMGUIContainer name="List-Container" />
-        <uie:PropertyField binding-path="showDebugLog" name="propertyField-ShowDebugLog" style="margin-top: 12px;" />
-    </ui:GroupBox>
-</ui:UXML>
