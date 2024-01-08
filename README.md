@@ -1,4 +1,4 @@
-# U-Singleton
+# USingleton
 ![Image03.png](Images/Image03.png)  
 싱글턴 패턴에 대하여 자동 기능이 탑재된 패키지입니다.
 
