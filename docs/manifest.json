@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "/Users/nkstudio/Desktop/USingletonDoc",
+  "source_base_path": "/Users/nkstudio/Desktop/USingleton",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -18,7 +18,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AutoSingleton.AutoSingletonEditor.html",
-          "hash": "Oax1TQBLnNWHHhaF0yorvWP/QlxHF1gTqJQvUL1ZLNs="
+          "hash": "3c5sBMndEhF+/lEVPjen0GbfdI90fldJ3dOrK0C6j9I="
         }
       },
       "is_incremental": false,
@@ -30,7 +30,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AutoSingleton.TypeDropDownPropertyDrawer.html",
-          "hash": "WoodGFy/W47rCnhI+KG0gVHSc+2U0+CrviqN/BD0/tU="
+          "hash": "x9PfLSb8DsQiVfqugkOb+xmcHIVbXiShhEWYMYHE8oY="
         }
       },
       "is_incremental": false,
@@ -42,7 +42,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AutoSingleton.html",
-          "hash": "HEpxI0mBxy65hQbGhnpUlaCZl3DmaBESY1UoXHtnBXk="
+          "hash": "YxpJ2UURznLKFmMHh/3FuW7z8h+AX8Nvgbycg3oOCyQ="
         }
       },
       "is_incremental": false,
@@ -54,7 +54,7 @@
       "output": {
         ".html": {
           "relative_path": "api/USingleton.AutoSingleton.AutoSingletonSettings.html",
-          "hash": "5pyui6vhry34W4V0p2qbs9lKsTi8ChmQRvmyCWWsFKE="
+          "hash": "6NMTk29XMP6wL5klKVdURnUc7hwNVRvIJTfdq7nWuas="
         }
       },
       "is_incremental": false,
@@ -66,7 +66,7 @@
       "output": {
         ".html": {
           "relative_path": "api/USingleton.AutoSingleton.Singleton.html",
-          "hash": "1tsjCRI4gAn+31GWVmkQjn8hYyrpoUG4JkKtYCmLY54="
+          "hash": "/DS0LVA+ckd6nc853m7xXEFcqoW3yQAw0GhVVoJ3OnI="
         }
       },
       "is_incremental": false,
@@ -78,7 +78,7 @@
       "output": {
         ".html": {
           "relative_path": "api/USingleton.AutoSingleton.SingletonAttribute.html",
-          "hash": "AqAADEFp/r22K3q1i2BwPGnhh8pcbtkA7ckt/WULNEM="
+          "hash": "foOcefTcJHdgbF8Myhsj5p7LfjRP8LL++dH5vJNzRdU="
         }
       },
       "is_incremental": false,
@@ -90,7 +90,7 @@
       "output": {
         ".html": {
           "relative_path": "api/USingleton.AutoSingleton.TypeDropDownAttribute.html",
-          "hash": "M/tjnEeWSst9ocZZT4versyedVv2JSKb+RTg5YbV+XQ="
+          "hash": "DoCR8zKZP5DqlU6YDxoUUHzVL/LepyusJp/NPrxBUNs="
         }
       },
       "is_incremental": false,
@@ -102,7 +102,7 @@
       "output": {
         ".html": {
           "relative_path": "api/USingleton.AutoSingleton.html",
-          "hash": "FmZB0FaAZlxWf/VT2hsrrRXkUj7RzK50wVSZsZr2F10="
+          "hash": "T9MfbN77zbqskI0wHpgqtnELwHpnVJGQjNla3mF9/rQ="
         }
       },
       "is_incremental": false,
@@ -114,7 +114,7 @@
       "output": {
         ".html": {
           "relative_path": "api/USingleton.SelfSingleton.Singleton.html",
-          "hash": "MzK1J/mqZXtCOZNXl3KS64lq3p4QlUSdh2G9SMhxPzw="
+          "hash": "rI3EBea4+MCSNL5ihqZzMPTn94N3Xot7dnv+p5jpz+k="
         }
       },
       "is_incremental": false,
@@ -126,7 +126,7 @@
       "output": {
         ".html": {
           "relative_path": "api/USingleton.SelfSingleton.html",
-          "hash": "GFnnhcEcYs3piVUCL0M3kBrDtvWojlBj99+kAF3ydKY="
+          "hash": "jBRzb5rHsaw1DhuMQgu1JDTBzgK2ujCPdBbg0Vq/WFk="
         }
       },
       "is_incremental": false,
@@ -138,7 +138,7 @@
       "output": {
         ".html": {
           "relative_path": "api/USingleton.Singleton.html",
-          "hash": "CzCu5rOCmwz8xcSZ8phn70OVdyvoccRxH5+4uwVSgjM="
+          "hash": "ulMq9alc9z3TH0nuYkz7+sMRntNhQaGFw256GdUMc/Q="
         }
       },
       "is_incremental": false,
@@ -150,7 +150,7 @@
       "output": {
         ".html": {
           "relative_path": "api/USingleton.SingletonManager.html",
-          "hash": "E9BOopXh1wrGt1UM6Dilv0kGdDIJTdPElsJu//A99Wk="
+          "hash": "IqnDtepbMhIjZhRvLs7gE/7kSDj+wslIkpedLLLT9vI="
         }
       },
       "is_incremental": false,
@@ -162,7 +162,7 @@
       "output": {
         ".html": {
           "relative_path": "api/USingleton.Utility.Messager.DoObject.html",
-          "hash": "cUnR94XqSzzb85aCt2ap1d/zBoZgVeDSTYua4N93NFQ="
+          "hash": "kg7VqpE2eW1ChfMtZDO5t8lxjfpexu1gfoYPnyQXvbo="
         }
       },
       "is_incremental": false,
@@ -174,7 +174,7 @@
       "output": {
         ".html": {
           "relative_path": "api/USingleton.Utility.Messager.html",
-          "hash": "X/hEc6MoGD6HURH2mI9EqrDHswX3Vvb35CabRJCmL3k="
+          "hash": "UgoBweK3XcgwOvDe8qsfyvKQNtPRSFUtsYRDB39T8I0="
         }
       },
       "is_incremental": false,
@@ -186,7 +186,7 @@
       "output": {
         ".html": {
           "relative_path": "api/USingleton.Utility.html",
-          "hash": "Ci+H+2nUIOvoyExwhDFmuNUdEIokIprmeJeeFf7clIU="
+          "hash": "mjzdTIXcU7NJ201AOqaro5ZL3uSQbnCgt8D+xSlAFUM="
         }
       },
       "is_incremental": false,
@@ -198,7 +198,7 @@
       "output": {
         ".html": {
           "relative_path": "api/USingleton.html",
-          "hash": "SCzQyD4R68jjeZXpO+329LVblPtW+oLfYcLVTpoQLpw="
+          "hash": "HT640HzxuP2coJAd67xd91MJM1QoIqB22RuAgkOHQbs="
         }
       },
       "is_incremental": false,
@@ -210,7 +210,7 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "jK8Jpei2MO2aMkkKmMU8rMK2W6/wD6UvxcLbQM6DXVk="
+          "hash": "vTO5CUbM7Ht6DV2gu9z/8Yn0+W53eYzux0leHUSfPQU="
         }
       },
       "is_incremental": false,
@@ -466,7 +466,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "NUWa0b8shAderGoG76tI+SmF6YB9MeUiiOmo5Cko6PY="
+          "hash": "fyyW5CBXqJhgI5goRCDB/r03663GGFYoKPZsouHGPXk="
         }
       },
       "is_incremental": false,
@@ -478,7 +478,7 @@
       "output": {
         ".html": {
           "relative_path": "license/LICENSE.html",
-          "hash": "WyYPCS7WRVPJ5Z2tr7d3gCENbZ0bUpaiZQSf560oZxw="
+          "hash": "YqDTetbzM9Uv5AyeZfZvuAhDueDE1hKmqpvaD5pMvkM="
         }
       },
       "is_incremental": false,
@@ -502,7 +502,7 @@
       "output": {
         ".html": {
           "relative_path": "manual/Additional.html",
-          "hash": "cSy6n2pBve+VA53ndqyeeErpqc+y8ay88U4f7JT5ftk="
+          "hash": "2qrWlr3Wbr/WOVr0rye1uKZ4Kf/W38NrudEDp9BymyE="
         }
       },
       "is_incremental": false,
@@ -514,7 +514,7 @@
       "output": {
         ".html": {
           "relative_path": "manual/Addressable.html",
-          "hash": "L0VBuIA0G53DX4xbdhQaKL+MCyx4Wu2K2FcF01v+aI8="
+          "hash": "pZ58Fi0uVP5+f0Uug3+JDNNQnD7T5iNfnvtUb2CJGuw="
         }
       },
       "is_incremental": false,
@@ -526,7 +526,7 @@
       "output": {
         ".html": {
           "relative_path": "manual/AutoSingleton.html",
-          "hash": "jx2S5MPkmCaB//cIJRzsfO0rarI+rL8a4O/yK1LUxG0="
+          "hash": "guHNMOXLP6t65v8OZTRmnCC+fraCLywl2MxrZUt4dJo="
         }
       },
       "is_incremental": false,
@@ -538,7 +538,7 @@
       "output": {
         ".html": {
           "relative_path": "manual/Installation.html",
-          "hash": "TkFObWYva3JaHciYWhVcf+mO5uJEq282LRODyiZx4Vw="
+          "hash": "eTSi3DLmzyTExOifFSt+Oir/CNveiryrK7GUUfECnjM="
         }
       },
       "is_incremental": false,
@@ -550,7 +550,7 @@
       "output": {
         ".html": {
           "relative_path": "manual/Messager.html",
-          "hash": "pOlJ2Phfdjz1NlvZrUYn8Kbm2jmWeW4F8j+0BqZSLLU="
+          "hash": "XKjEEogykV7hspd4b5CQcR1PO1dJnW21mVB+ej0ckUs="
         }
       },
       "is_incremental": false,
@@ -562,7 +562,7 @@
       "output": {
         ".html": {
           "relative_path": "manual/SelfSingleton.html",
-          "hash": "YSuqbRs1e0SNr0UuEqljeFYMlZrDze73HG8d/4ydd6A="
+          "hash": "gobi914mz8UE8IepYht9cu8N4m0gotTCrk/+Iqc4TOk="
         }
       },
       "is_incremental": false,
@@ -574,7 +574,7 @@
       "output": {
         ".html": {
           "relative_path": "manual/Settings.html",
-          "hash": "JdrBs5mLCvh3RqIvzw/bNJhUl6ALShjC2LIIg3tfH00="
+          "hash": "FB2goZX+1yW6PBrQUXsqgMLmY+5Z43fgLN5oeZabeAI="
         }
       },
       "is_incremental": false,
@@ -586,7 +586,7 @@
       "output": {
         ".html": {
           "relative_path": "manual/index.html",
-          "hash": "hRy0CTe2Afw2p3YLDzMxFaRp4z26OaiTD+dv7c5AI6g="
+          "hash": "JTp4wG/XsQlMUlxazfUcdeiRDoQHN0gjidXt8VgnMnU="
         }
       },
       "is_incremental": false,
@@ -610,7 +610,7 @@
       "output": {
         ".html": {
           "relative_path": "src/USingleton/CHANGELOG.html",
-          "hash": "2pml/10p8A5MELXdV9dB4GuJKhptmxZ5hUMIVDc+jhY="
+          "hash": "A++6WR/I1MIkyuojnuCI109rbVNf5yveelvVnI3Nies="
         }
       },
       "is_incremental": false,
