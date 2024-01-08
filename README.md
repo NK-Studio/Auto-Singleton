@@ -62,8 +62,3 @@ public class TestCode : MonoBehaviour
 ```
 
 다음과 같이 작성하여 접근할 수 있습니다.
-
-### 주의
-> [!WARNING]
-> **Auto Singleton은** DontDestroyOnLoad를 재정의할 수 없으며, 컨셉 자체가 **씬이 변경되어도 파괴되지 않는 것**입니다.
-> 만약, **DontDestroyOnLoad를 재정의하여 씬이 변경될 때 파괴되도록 하고 싶다면 <u>Self Singleton</u>을 사용하는 것을 추천**합니다.
