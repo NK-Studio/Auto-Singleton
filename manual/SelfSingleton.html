@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Self Singleton | USingleton </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Self Singleton | USingleton ">
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../manual/index.html">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
+              </a>            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="self-singleton">Self Singleton</h1>
+
+<p><strong>유동적으로 사용 가능</strong>하며, DontDestroyOnLoad를 재정의하여 씬이 변경되면 파괴되도록 할 수 있습니다.</p>
+<hr>
+<h2 id="싱글턴-객체-만들기">싱글턴 객체 만들기</h2>
+<pre><code class="lang-csharp">using UnityEngine;
+
+public class GameManager : MonoBehaviour
+{
+
+}
+</code></pre>
+<p>싱글턴 또는 매니저로 만들고 싶은 MonoBehaviour 클래스를 작성합니다.</p>
+<pre><code class="lang-csharp" highlight-lines="2,4">using UnityEngine;
+using USingleton.SelfSingleton;
+
+public class GameManager : Singleton
+{
+
+}
+</code></pre>
+<p>다음 내용을 추가 작성 및 수정합니다.</p>
+<h2 id="프리팹-생성하기">프리팹 생성하기</h2>
+<p><img src="../images/Image01.png" alt="Image01.png"><br>
+Tools -&gt; USingleton -&gt; Refresh을 클릭합니다.</p>
+<p><img src="../images/Image02.png" alt="Image02.png"><br>
+리소스 폴더에 자동으로 프리팹이 생성됩니다.<br>
+(프리팹 이름은 클래스 이름과 동일합니다.)</p>
+<h2 id="접근-하기">접근 하기</h2>
+<pre><code class="lang-csharp" highlight-lines="2,8">using UnityEngine;
+using USingleton;
+
+public class TestCode : MonoBehaviour
+{
+    private void Start()
+    {
+        Singleton.Instance&lt;GameManager&gt;().HP = 100;
+    }
+}
+</code></pre>
+<p>다음과 같이 작성하여 접근할 수 있습니다.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Singleton.Instance() 로 접근했을 때 싱글턴 객체가 없을 경우 리소스 폴더에서 로드하여 자동으로 생성합니다.</p>
+</div>
+<h2 id="추가적-옵션">추가적 옵션</h2>
+<pre><code class="lang-csharp" highlight-lines="5-8">using USingleton.SelfSingleton;
+
+public class GameManager : Singleton
+{
+    protected override bool DontDestroyOnLoad()
+    {
+        return false;
+    }
+}
+</code></pre>
+<p>DontDestroyOnLoad를 재정의하여 씬이 변경될 때 파괴되도록 할 수 있습니다.</p>
+<h2 id="주의">주의</h2>
+<pre><code class="lang-csharp" highlight-lines="7,12">using USingleton.SelfSingleton;
+
+public class GameManager : Singleton
+{
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+    }
+}
+</code></pre>
+<p><strong>Awake와 OnDestroy를 재정의할 때 Base.Awake()와 Base.OnDestroy()를 호출</strong>해야 합니다. 이 메서드들은 Singleton.instance를 동작시키는 등록과 해제 작업을 수행합니다. 만약 Base.Awake()와 Base.OnDestroy()를 호출하지 않으면, 문제를 발생시킬 수 있습니다.</p>
+<p>만약, <strong>어플리케이션의 실행과 마지막까지 계속 살아있는 Singleton 객체</strong>를 만들고 싶다면 <strong><u>Auto Singleton</u>을 사용하는 것을 추천</strong>합니다.
+<strong>단일 씬에서만 사용되는 싱글턴 객체</strong>를 만들고 싶다면 <strong><u>Self Singleton</u>을 사용하는 것을 추천</strong>합니다.</p>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      <span>Copyright © 2024 NK Studio<br>Generated by <strong>DocFX</strong> on 6 January 2024 </span>
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

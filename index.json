@@ -1,0 +1,147 @@
+{
+  "api/AutoSingleton.AutoSingletonEditor.html": {
+    "href": "api/AutoSingleton.AutoSingletonEditor.html",
+    "title": "Class AutoSingletonEditor | USingleton",
+    "keywords": "Class AutoSingletonEditor Inheritance object AutoSingletonEditor Namespace: AutoSingleton Assembly: cs.temp.dll.dll Syntax public class AutoSingletonEditor : Editor Methods CreateInspectorGUI() Declaration public override VisualElement CreateInspectorGUI() Returns Type Description VisualElement"
+  },
+  "api/AutoSingleton.html": {
+    "href": "api/AutoSingleton.html",
+    "title": "Namespace AutoSingleton | USingleton",
+    "keywords": "Namespace AutoSingleton Classes AutoSingletonEditor TypeDropDownPropertyDrawer"
+  },
+  "api/AutoSingleton.TypeDropDownPropertyDrawer.html": {
+    "href": "api/AutoSingleton.TypeDropDownPropertyDrawer.html",
+    "title": "Class TypeDropDownPropertyDrawer | USingleton",
+    "keywords": "Class TypeDropDownPropertyDrawer Inheritance object TypeDropDownPropertyDrawer Namespace: AutoSingleton Assembly: cs.temp.dll.dll Syntax public class TypeDropDownPropertyDrawer : PropertyDrawer Methods OnGUI(Rect, SerializedProperty, GUIContent) Declaration public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) Parameters Type Name Description Rect position SerializedProperty property GUIContent label"
+  },
+  "api/index.html": {
+    "href": "api/index.html",
+    "title": "| USingleton",
+    "keywords": "이 패키지의 Scripting API 기술 자료입니다."
+  },
+  "api/USingleton.AutoSingleton.AutoSingletonSettings.html": {
+    "href": "api/USingleton.AutoSingleton.AutoSingletonSettings.html",
+    "title": "Class AutoSingletonSettings | USingleton",
+    "keywords": "Class AutoSingletonSettings AutoSingleton 기능에 대한 설정을 나타냅니다. Inheritance object AutoSingletonSettings Namespace: USingleton.AutoSingleton Assembly: cs.temp.dll.dll Syntax public class AutoSingletonSettings : ScriptableObject Fields excludedManagers 자동으로 생성하지 않을 싱글턴 매니저의 이름을 등록합니다. Declaration protected string[] excludedManagers Field Value Type Description string[] showDebugLog 싱글턴 객체를 생성할 때 디버그 모드를 활성화할 수 있는 기능을 제공합니다. Declaration protected bool showDebugLog Field Value Type Description bool Properties CurrentSettings 현재 설정을 가져옵니다. Declaration public static AutoSingletonSettings CurrentSettings { get; } Property Value Type Description AutoSingletonSettings 현재 설정입니다. Remarks 설정 에셋을 사용할 수 있으면 이를 로드하고 반환합니다. 그렇지 않으면 설정을 생성하기 위한 기본 생성자를 반환합니다. DefaultCreator AutoSingleton 클래스의 기본 설정을 나타냅니다. Declaration public static AutoSingletonSettings DefaultCreator { get; } Property Value Type Description AutoSingletonSettings ExcludedManagers Declaration public string[] ExcludedManagers { get; } Property Value Type Description string[] HasSettingAsset 설정 에셋이 존재하는지 여부를 나타내는 값을 가져옵니다. Declaration public static bool HasSettingAsset { get; } Property Value Type Description bool Remarks 설정 에셋은 'Auto Singleton Settings' 이름을 사용하여 리소스 폴더에서 로드됩니다. 에셋이 발견되면 true를 반환하고, 그렇지 않으면 false를 반환합니다. ShowDebugLog Declaration public bool ShowDebugLog { get; } Property Value Type Description bool"
+  },
+  "api/USingleton.AutoSingleton.html": {
+    "href": "api/USingleton.AutoSingleton.html",
+    "title": "Namespace USingleton.AutoSingleton | USingleton",
+    "keywords": "Namespace USingleton.AutoSingleton Classes AutoSingletonSettings AutoSingleton 기능에 대한 설정을 나타냅니다. Singleton 싱글톤 인스턴스에 대한 일반 액세스 클래스입니다. SingletonAttribute SingletonAttribute는 클래스의 단일 인스턴스만 애플리케이션에 존재해야 할 경우 사용됩니다. TypeDropDownAttribute 인스펙터에서 속성에 대한 드롭다운 유형 선택을 지정하는 데 사용되는 사용자 정의 속성을 나타냅니다."
+  },
+  "api/USingleton.AutoSingleton.Singleton.html": {
+    "href": "api/USingleton.AutoSingleton.Singleton.html",
+    "title": "Class Singleton | USingleton",
+    "keywords": "Class Singleton 싱글톤 인스턴스에 대한 일반 액세스 클래스입니다. Inheritance object Singleton Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Namespace: USingleton.AutoSingleton Assembly: cs.temp.dll.dll Syntax public static class Singleton"
+  },
+  "api/USingleton.AutoSingleton.SingletonAttribute.html": {
+    "href": "api/USingleton.AutoSingleton.SingletonAttribute.html",
+    "title": "Class SingletonAttribute | USingleton",
+    "keywords": "Class SingletonAttribute SingletonAttribute는 클래스의 단일 인스턴스만 애플리케이션에 존재해야 할 경우 사용됩니다. Inheritance object SingletonAttribute Namespace: USingleton.AutoSingleton Assembly: cs.temp.dll.dll Syntax public class SingletonAttribute : Attribute Constructors SingletonAttribute(string, bool) 매니저로 전환합니다. Declaration public SingletonAttribute(string prefabName, bool useAddressable = false) Parameters Type Name Description string prefabName 프리팹으로 변환할 때 사용할 이름 bool useAddressable Addressable Asset System 스타일을 사용합니까? (요구사항: Addressable Asset System) Properties PrefabName 프리팹의 이름. Declaration public string PrefabName { get; } Property Value Type Description string UseAddressable 속성 UseAddressable이 참인지 거짓인지를 나타냅니다. Declaration public bool UseAddressable { get; } Property Value Type Description bool 속성 UseAddressable이 참이면 true, 그렇지 않으면 false."
+  },
+  "api/USingleton.AutoSingleton.TypeDropDownAttribute.html": {
+    "href": "api/USingleton.AutoSingleton.TypeDropDownAttribute.html",
+    "title": "Class TypeDropDownAttribute | USingleton",
+    "keywords": "Class TypeDropDownAttribute 인스펙터에서 속성에 대한 드롭다운 유형 선택을 지정하는 데 사용되는 사용자 정의 속성을 나타냅니다. Inheritance object TypeDropDownAttribute Namespace: USingleton.AutoSingleton Assembly: cs.temp.dll.dll Syntax public class TypeDropDownAttribute : PropertyAttribute Constructors TypeDropDownAttribute(Type) Declaration public TypeDropDownAttribute(Type baseType) Parameters Type Name Description Type baseType Fields BaseType Declaration public readonly Type BaseType Field Value Type Description Type"
+  },
+  "api/USingleton.html": {
+    "href": "api/USingleton.html",
+    "title": "Namespace USingleton | USingleton",
+    "keywords": "Namespace USingleton Classes Singleton SingletonManager"
+  },
+  "api/USingleton.SelfSingleton.html": {
+    "href": "api/USingleton.SelfSingleton.html",
+    "title": "Namespace USingleton.SelfSingleton | USingleton",
+    "keywords": "Namespace USingleton.SelfSingleton Classes Singleton"
+  },
+  "api/USingleton.SelfSingleton.Singleton.html": {
+    "href": "api/USingleton.SelfSingleton.Singleton.html",
+    "title": "Class Singleton | USingleton",
+    "keywords": "Class Singleton Inheritance object Singleton Namespace: USingleton.SelfSingleton Assembly: cs.temp.dll.dll Syntax public abstract class Singleton : MonoBehaviour Methods Awake() Declaration protected virtual void Awake() DontDestroyOnLoad() 새로운 씬이 로드될 때 게임 오브젝트가 파괴되는 것을 방지합니다. Declaration protected virtual bool DontDestroyOnLoad() Returns Type Description bool 기본적으로 true를 반환하며, false를 지정할 시 새로운 씬이 로드될 때 게임 오브젝트가 파괴됩니다. OnDestroy() Declaration protected virtual void OnDestroy()"
+  },
+  "api/USingleton.Singleton.html": {
+    "href": "api/USingleton.Singleton.html",
+    "title": "Class Singleton | USingleton",
+    "keywords": "Class Singleton Inheritance object Singleton Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Namespace: USingleton Assembly: cs.temp.dll.dll Syntax public static class Singleton Methods HasInstance<T>() SingletonManager에 지정된 유형의 인스턴스가 있는지 여부를 확인합니다. Declaration public static bool HasInstance<T>() where T : MonoBehaviour Returns Type Description bool 지정된 유형의 인스턴스가 SingletonManager에 있으면 true이고, 그렇지 않으면 false입니다. Type Parameters Name Description T 확인할 MonoBehaviour 인스턴스의 유형입니다. Instance<T>() Managers 사전에 있는 경우 지정된 일반 유형 T의 인스턴스를 반환합니다. 그렇지 않으면 null을 반환합니다. Declaration public static T Instance<T>() where T : MonoBehaviour Returns Type Description T Managers 사전에 있는 경우 지정된 일반 유형 T의 인스턴스입니다. 그렇지 않으면 null을 반환합니다. Type Parameters Name Description T 검색할 MonoBehaviour 인스턴스의 유형"
+  },
+  "api/USingleton.SingletonManager.html": {
+    "href": "api/USingleton.SingletonManager.html",
+    "title": "Class SingletonManager | USingleton",
+    "keywords": "Class SingletonManager Inheritance object SingletonManager Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Namespace: USingleton Assembly: cs.temp.dll.dll Syntax public static class SingletonManager Methods Create(Singleton, bool) 지정된 자체 싱글톤 인스턴스를 미리 매니저에 추가하고 선택적으로 씬 로드 시 삭제되지 않도록 표시합니다. Declaration public static void Create(Singleton singleton, bool useDontDestroyOnLoad) Parameters Type Name Description Singleton singleton 추가할 자체 싱글톤 인스턴스입니다. bool useDontDestroyOnLoad 씬 로드 시 싱글톤이 삭제되지 않도록 표시할지 여부를 나타내는 플래그입니다. GetAllSingletonAttributeTypes() SingletonAttribute로 장식되고 추상이 아닌 모든 유형을 검색합니다. Declaration public static Type[] GetAllSingletonAttributeTypes() Returns Type Description Type[] 싱글톤 유형을 나타내는 Type 객체의 배열입니다. GetAllSingletonTypes() Singleton 클래스를 상속받은 모든 유형을 검색합니다. Declaration public static Type[] GetAllSingletonTypes() Returns Type Description Type[] 싱글톤 유형을 나타내는 Type 객체의 배열입니다. Release<T>(T) 지정된 싱글톤 인스턴스를 해제합니다. Declaration public static void Release<T>(T singleton) where T : MonoBehaviour Parameters Type Name Description T singleton The singleton instance to release. Type Parameters Name Description T The type of the singleton."
+  },
+  "api/USingleton.Utility.html": {
+    "href": "api/USingleton.Utility.html",
+    "title": "Namespace USingleton.Utility | USingleton",
+    "keywords": "Namespace USingleton.Utility Classes Messager Messager 클래스는 메시지를 등록하고 보내는 기능을 제공합니다. Delegates Messager.DoObject 매개 변수와 반환 값이 없는 메서드를 정의하는 대리자를 나타냅니다."
+  },
+  "api/USingleton.Utility.Messager.DoObject.html": {
+    "href": "api/USingleton.Utility.Messager.DoObject.html",
+    "title": "Delegate Messager.DoObject | USingleton",
+    "keywords": "Delegate Messager.DoObject 매개 변수와 반환 값이 없는 메서드를 정의하는 대리자를 나타냅니다. Namespace: USingleton.Utility Assembly: cs.temp.dll.dll Syntax public delegate void Messager.DoObject()"
+  },
+  "api/USingleton.Utility.Messager.html": {
+    "href": "api/USingleton.Utility.Messager.html",
+    "title": "Class Messager | USingleton",
+    "keywords": "Class Messager Messager 클래스는 메시지를 등록하고 보내는 기능을 제공합니다. Inheritance object Messager Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Namespace: USingleton.Utility Assembly: cs.temp.dll.dll Syntax public static class Messager Methods RegisterMessage(string, DoObject) 주어진 메시지 이름으로 메시지를 등록합니다. Declaration public static void RegisterMessage(string messageName, Messager.DoObject doObject) Parameters Type Name Description string messageName 메시지의 이름입니다. Messager.DoObject doObject 등록하려는 메시지 동작입니다. RemoveAllMessages() 등록된 모든 메시지를 제거합니다. Declaration public static void RemoveAllMessages() RemoveMessage(string) RegisteredMessages에서 이름을 기준으로 메시지를 제거합니다. Declaration public static void RemoveMessage(string messageName) Parameters Type Name Description string messageName 제거할 메시지의 이름입니다. Send(string) 지정된 이벤트 이름으로 메시지를 보냅니다. Declaration public static void Send(string eventName) Parameters Type Name Description string eventName 이벤트의 이름입니다."
+  },
+  "index.html": {
+    "href": "index.html",
+    "title": "| USingleton",
+    "keywords": ""
+  },
+  "license/LICENSE.html": {
+    "href": "license/LICENSE.html",
+    "title": "| USingleton",
+    "keywords": "MIT License Copyright (c) 2023 NK Studio Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+  },
+  "manual/Additional.html": {
+    "href": "manual/Additional.html",
+    "title": "| USingleton",
+    "keywords": ""
+  },
+  "manual/Addressable.html": {
+    "href": "manual/Addressable.html",
+    "title": "Addressable Asset System 지원 | USingleton",
+    "keywords": "Addressable Asset System 지원 이 라이브러리는 Resources 폴더에 의존하고 있습니다. 만약, Resources 폴더 사용하는 것에 부담이 있다면, Addressable Asset System을 사용할 수 있습니다. Caution 이 기능은 Auto Singleton에만 지원됩니다. Addressable Asset System 기능 활성화하기 Window -> Package Manager에서 Addressable Asset System을 설치합니다. 유니티 상단에 Tools -> USingleton -> Settings를 클릭한 다음, Use Addressable 옵션을 체크 합니다. 코드 수정하기 using UnityEngine; using USingleton.AutoSingleton; [Singleton(\"GameManager\", useAddressable: true)] public class GameManager : MonoBehaviour { } Singleton Attribute의 두번째 인자에 true를 지정합니다. 프리팹 생성하기 Tools -> USingleton -> Refresh을 클릭합니다. Manager 폴더에 자동으로 프리팹이 생성됩니다. (프리팹 이름과 어드레서블 에셋 주소는 Singleton 어트리뷰트에 부여한 이름과 동일합니다.) Warning 기존에 Resources 폴더에 생성된 프리팹이 있다면, 삭제하고 다시 생성하는 것을 권장합니다. 접근 하기 using UnityEngine; using USingleton; public class TestCode : MonoBehaviour { private void Start() { Singleton.Instance<GameManager>().HP = 100; } } 다음과 같이 작성하여 접근할 수 있습니다. 주의 Warning Addressable Asset System 지원은 현재 실험적인 기능입니다, 지속적인 피드백을 남겨주시면 감사하겠습니다."
+  },
+  "manual/AutoSingleton.html": {
+    "href": "manual/AutoSingleton.html",
+    "title": "Auto Singleton | USingleton",
+    "keywords": "Auto Singleton 오토 싱글턴은 어플리케이션이 실행되는 동안 계속 살아있는 싱글턴 객체를 만들고 싶을 때 사용하는 패턴입니다. USingleton의 메인은 Auto Singleton입니다. 싱글턴 객체 만들기 using UnityEngine; public class GameManager : MonoBehaviour { } 싱글턴 또는 매니저로 만들고 싶은 MonoBehaviour 클래스를 작성합니다. using UnityEngine; using USingleton.AutoSingleton; [Singleton(\"GameManager\")] public class GameManager : MonoBehaviour { } 다음 내용을 추가 작성합니다. 프리팹 생성하기 Tools -> USingleton -> Refresh을 클릭합니다. 리소스 폴더에 자동으로 프리팹이 생성됩니다. (프리팹 이름은 Singleton 어트리뷰트에 부여한 이름과 동일합니다.) 접근 하기 using UnityEngine; using USingleton; public class TestCode : MonoBehaviour { private void Start() { Singleton.Instance<GameManager>().HP = 100; } } 다음과 같이 작성하여 접근할 수 있습니다. 주의 Warning Auto Singleton은 DontDestroyOnLoad를 재정의할 수 없으며, 컨셉 자체가 씬이 변경되어도 파괴되지 않는 것입니다. 만약, DontDestroyOnLoad를 재정의하여 씬이 변경될 때 파괴되도록 하고 싶다면 Self Singleton 을 사용하는 것을 추천합니다."
+  },
+  "manual/index.html": {
+    "href": "manual/index.html",
+    "title": "USingleton | USingleton",
+    "keywords": "USingleton 싱글턴 패턴에 대하여 자동 기능이 탑재된 패키지입니다. 소개 USingleton은 유니티 개발에서 자주 사용하는 Singleton 패턴을 빠르게 빌드업할 수 있도록 도와주는 패키지입니다. 이 패키지는 두가지 스타일의 Singleton 방식을 지원합니다. Auto Singleton Self Singleton Auto Singleton Auto Singleton은 클래스에 Singleton 어트리뷰트를 부여하면 자동으로 싱글턴 패턴을 적용해주는 기능입니다. 또한, 런타임시 자동으로 생성되는 기능을 지원합니다. Self Singleton Self Singleton은 Singleton 클래스를 상속하여 싱글턴 패턴을 적용해주는 기능입니다. 일반적으로 런타임시 자동으로 생성되지 않습니다. 만약, 해당 Singleton 인스턴스가 요구될 경우 Resources 폴더에서 자동 생성되는 처리가 동작합니다. Auto Singleton VS Self Singleton Auto Singleton Self Singleton 비고 런타임시 자동 생성 O △ Self Singleton은 인스턴스 요구시, Resources에서 로드되어 생성됩니다. Resources 폴더에서 로드 △ O Auto Singleton은 Addressable Asset System을 제공하여 Resource폴더가 아니더라도 동작시킬 수 있습니다. DontDestroyOnLoad 재정의 X O Note Auto Singleton은 어플리케이션이 실행되는 동안 계속 살아있는 싱글턴 객체를 만들고 싶을 때 사용하는 패턴입니다. Self Singleton은 유동적으로 동작할 수 있으며, DontDestroyOnLoad를 재정의하여 씬이 변경되면 파괴되도록 할 수 있습니다. 일반적으로는 Auto Singleton을 사용하며, DontDestroyOnLoad를 재정의하여 씬이 변경되면 파괴되도록 하고 싶다면 Self Singleton을 사용하는 것을 추천합니다."
+  },
+  "manual/Installation.html": {
+    "href": "manual/Installation.html",
+    "title": "설치하기 | USingleton",
+    "keywords": "설치하기 Git UPM U-Singleton 패키지를 설치하려면 다음 단계가 필요합니다. Git이 설치되어 있는지 확인하십시오. Package Manager를 오픈합니다. +버튼을 클릭하고, Add package from git URL을 클릭합니다. https://github.com/NK-Studio/USingleton.git 를 입력하고 추가 버튼을 클릭하세요. UnityPackage GitHub Releases에서 최신 버전의 패키지를 다운로드 받아 설치합니다."
+  },
+  "manual/Messager.html": {
+    "href": "manual/Messager.html",
+    "title": "Messager | USingleton",
+    "keywords": "Messager Messager 기능은 유니티의 SendMessage와 비슷한 기능을 제공합니다. 다만, SendMessage는 계층 구조의 모든 오브젝트를 검사하는 반면, Messager는 관리되는 Dictionary에 등록한 메세지를 검사하여 성능 부분에서 월등합니다. 시작해요 전체 코드 예시를 위해 두 가지 클래스를 작성해보겠습니다. using UnityEngine; using USingleton.Utility; public class ScreenEffect : MonoBehaviour { private void Awake() { // 동작을 등록합니다. Messager.RegisterMessage(\"FadeIn\", FadeIn); Messager.RegisterMessage(\"FadeOut\", FadeOut); } /// <summary> /// 개체가 페이드 인됩니다. /// </summary> public void FadeIn() { Debug.Log(\"FadeIn\"); } /// <summary> /// 현재 개체를 페이드 아웃합니다. /// </summary> public void FadeOut() { Debug.Log(\"FadeOut\"); } private void OnDestroy() { // 등록된 동작을 제거합니다. Messager.RemoveMessage(\"FadeIn\"); Messager.RemoveMessage(\"FadeOut\"); } } using UnityEngine; using USingleton.Utility; public class TestCode : MonoBehaviour { private void Update() { if (Input.GetKeyDown(KeyCode.A)) { Messager.Send(\"FadeIn\"); } if (Input.GetKeyDown(KeyCode.S)) { Messager.Send(\"FadeOut\"); } } } 등록하기 using UnityEngine; using USingleton.Utility; public class ScreenEffect : MonoBehaviour { private void Awake() { Messager.RegisterMessage(\"FadeIn\", FadeIn); Messager.RegisterMessage(\"FadeOut\", FadeOut); } public void FadeIn() { Debug.Log(\"FadeIn\"); } public void FadeOut() { Debug.Log(\"FadeOut\"); } } 다음과 같이 작성하여 Awake에서 등록 작업을 수행합니다. 해제하기 using UnityEngine; using USingleton.Utility; public class ScreenEffect : MonoBehaviour { private void OnDestroy() { // 등록된 동작을 제거합니다. Messager.RemoveMessage(\"FadeIn\"); Messager.RemoveMessage(\"FadeOut\"); } } 다음과 같이 작성하여 OnDestroy에서 해제 작업을 수행합니다. 메세지 보내기 using UnityEngine; using USingleton.Utility; public class TestCode : MonoBehaviour { private void Update() { if (Input.GetKeyDown(KeyCode.A)) { Messager.Send(\"FadeIn\"); } if (Input.GetKeyDown(KeyCode.S)) { Messager.Send(\"FadeOut\"); } } } 다음과 같이 작성하여 메세지를 보낼 수 있습니다."
+  },
+  "manual/SelfSingleton.html": {
+    "href": "manual/SelfSingleton.html",
+    "title": "Self Singleton | USingleton",
+    "keywords": "Self Singleton 유동적으로 사용 가능하며, DontDestroyOnLoad를 재정의하여 씬이 변경되면 파괴되도록 할 수 있습니다. 싱글턴 객체 만들기 using UnityEngine; public class GameManager : MonoBehaviour { } 싱글턴 또는 매니저로 만들고 싶은 MonoBehaviour 클래스를 작성합니다. using UnityEngine; using USingleton.SelfSingleton; public class GameManager : Singleton { } 다음 내용을 추가 작성 및 수정합니다. 프리팹 생성하기 Tools -> USingleton -> Refresh을 클릭합니다. 리소스 폴더에 자동으로 프리팹이 생성됩니다. (프리팹 이름은 클래스 이름과 동일합니다.) 접근 하기 using UnityEngine; using USingleton; public class TestCode : MonoBehaviour { private void Start() { Singleton.Instance<GameManager>().HP = 100; } } 다음과 같이 작성하여 접근할 수 있습니다. Tip Singleton.Instance() 로 접근했을 때 싱글턴 객체가 없을 경우 리소스 폴더에서 로드하여 자동으로 생성합니다. 추가적 옵션 using USingleton.SelfSingleton; public class GameManager : Singleton { protected override bool DontDestroyOnLoad() { return false; } } DontDestroyOnLoad를 재정의하여 씬이 변경될 때 파괴되도록 할 수 있습니다. 주의 using USingleton.SelfSingleton; public class GameManager : Singleton { protected override void Awake() { base.Awake(); } protected override void OnDestroy() { base.OnDestroy(); } } Awake와 OnDestroy를 재정의할 때 Base.Awake()와 Base.OnDestroy()를 호출해야 합니다. 이 메서드들은 Singleton.instance를 동작시키는 등록과 해제 작업을 수행합니다. 만약 Base.Awake()와 Base.OnDestroy()를 호출하지 않으면, 문제를 발생시킬 수 있습니다. 만약, 어플리케이션의 실행과 마지막까지 계속 살아있는 Singleton 객체를 만들고 싶다면 Auto Singleton 을 사용하는 것을 추천합니다. 단일 씬에서만 사용되는 싱글턴 객체를 만들고 싶다면 Self Singleton 을 사용하는 것을 추천합니다."
+  },
+  "manual/Settings.html": {
+    "href": "manual/Settings.html",
+    "title": "설정 파일 | USingleton",
+    "keywords": "설정 파일 항목 설명 Use Addressable Addressable Asset System 방식을 활성화합니다. (이 옵션은 Addressable 패키지를 요구합니다.) Excluded Managers 자동으로 생성되는 싱글턴 타입을 필터링 합니다. (디버그 용도) Show Debug Log 싱글턴 객체가 생성될 때 콘솔창에 로그를 출력합니다. USingleton 설정 파일은 다음과 같습니다. 설정 파일은 다음과 같은 경로를 통해 오픈할 수 있습니다."
+  },
+  "src/USingleton/CHANGELOG.html": {
+    "href": "src/USingleton/CHANGELOG.html",
+    "title": "Changelog | USingleton",
+    "keywords": "Changelog [1.2.6] - 2024-01-08 Fixed Change Messager class name [1.2.5] - 2024-01-08 Fixed Settings UI spacing modification Addressable method bug fix [1.2.4] - 2024-01-08 Added Self Singleton also added a function to automatically create a prefab. Automatically created if not present when checked with Singleton.Instance () - Self Singleton Only [1.2.3] - 2024-01-07 change Change settings file order [1.2.2] - 2024-01-07 Added Improved stability of addressable method [1.2.1] - 2024-01-07 Added Changed Auto Singleton at the top of the Editor to USingleton. [1.2.0] - 2023-12-29 Added Separated into Auto Singleton and Self Singleton [1.1.0] - 2023-12-28 Added Addressable support [1.0.0] - 2023-12-26 Init Development begins"
+  },
+  "src/USingleton/README.html": {
+    "href": "src/USingleton/README.html",
+    "title": "U-Singleton | USingleton",
+    "keywords": "U-Singleton 소개 싱글턴 패턴에 대하여 자동 기능이 탑재된 패키지입니다. 설치 Git UPM U-Singleton 패키지를 설치하려면 다음 단계가 필요합니다. Git이 설치되어 있는지 확인하십시오. Package Manager를 오픈합니다. +버튼을 클릭하고, Add package from git URL을 클릭합니다. https://github.com/NK-Studio/USingleton.git 를 입력하고 추가 버튼을 클릭하세요. Unity Package Releases에서 최신 버전의 패키지를 다운로드 받아 설치합니다. 사용법 타이틀의 제목으로 사용할 변수를 ArrayElementTitle 의 괄호에 작성합니다."
+  }
+}
