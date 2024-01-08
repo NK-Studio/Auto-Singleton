@@ -4,7 +4,7 @@
 싱글턴 패턴에 대하여 자동 기능이 탑재된 패키지입니다.
 
 ## 문서
-전체적인 문서는 [여기](https://nk-studio.github.io/USingleton/manual/index.html)를 클릭하여 확인해주세요.
+전체적인 문서는 [여기](https://nk-studio.github.io/USingleton/index.html)를 클릭하여 확인해주세요.
 
 ## 설치
 ### Git UPM
