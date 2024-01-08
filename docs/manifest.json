@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "/Users/nkstudio/Desktop/USingleton",
+  "source_base_path": "/Users/nkstudio/Desktop/USingletonDoc",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -610,22 +610,7 @@
       "output": {
         ".html": {
           "relative_path": "src/USingleton/CHANGELOG.html",
-          "hash": "L/gGJPinrfOtW5ZLc3M6iLGW2co7Grn9q7U/PGqtY/0="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
-      "type": "Conceptual",
-      "source_relative_path": "src/USingleton/README.md",
-      "output": {
-        ".html": {
-          "relative_path": "src/USingleton/README.html",
-          "hash": "dlSect3yYNn0pQaAOr2/cQ+Iqw5VbZsDR3xHJOK9h60="
+          "hash": "2pml/10p8A5MELXdV9dB4GuJKhptmxZ5hUMIVDc+jhY="
         }
       },
       "is_incremental": false,
@@ -658,7 +643,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 13,
+          "total_file_count": 12,
           "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {
