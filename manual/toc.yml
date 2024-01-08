@@ -1,0 +1,21 @@
+items:
+  - name: U-Singleton
+    href: index.md
+  - name: 설치 방법
+    href: Installation.md
+  - name: 시작 해요
+    items:
+      - name: Auto Singleton
+        href: AutoSingleton.md
+      - name: Self Singleton
+        href: SelfSingleton.md
+  - name: 추가적으로
+    items:
+      - name: Messager
+        href: Messager.md
+      - name: 설정 파일
+        href: Settings.md
+  - name: 실험적인
+    items:
+      - name: Addressable Asset System 지원
+        href: Addressable.md
