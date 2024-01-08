@@ -1,14 +1,11 @@
 # U-Singleton
 ## 소개
-- - -
 싱글턴 패턴에 대하여 자동 기능이 탑재된 패키지입니다.
 
 ## 문서
-- - -
 전체적인 문서는 [여기](https://nk-studio.github.io/USingleton/manual/index.html)를 클릭하여 확인해주세요.
 
 ## 설치
-- - -
 ### Git UPM
 U-Singleton 패키지를 설치하려면 다음 단계가 필요합니다.
 1. Git이 설치되어 있는지 확인하십시오.
@@ -20,7 +17,6 @@ U-Singleton 패키지를 설치하려면 다음 단계가 필요합니다.
 [Releases](https://github.com/NK-Studio/USingleton/releases)에서 최신 버전의 패키지를 다운로드 받아 설치합니다.
 ## 사용법
 
----
 ### 싱글턴 객체 만들기
 ```csharp
 using UnityEngine;
