@@ -84,11 +84,6 @@
     "title": "Class Messager | USingleton",
     "keywords": "Class Messager Messager 클래스는 메시지를 등록하고 보내는 기능을 제공합니다. Inheritance object Messager Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Namespace: USingleton.Utility Assembly: cs.temp.dll.dll Syntax public static class Messager Methods RegisterMessage(string, DoObject) 주어진 메시지 이름으로 메시지를 등록합니다. Declaration public static void RegisterMessage(string messageName, Messager.DoObject doObject) Parameters Type Name Description string messageName 메시지의 이름입니다. Messager.DoObject doObject 등록하려는 메시지 동작입니다. RemoveAllMessages() 등록된 모든 메시지를 제거합니다. Declaration public static void RemoveAllMessages() RemoveMessage(string) RegisteredMessages에서 이름을 기준으로 메시지를 제거합니다. Declaration public static void RemoveMessage(string messageName) Parameters Type Name Description string messageName 제거할 메시지의 이름입니다. Send(string) 지정된 이벤트 이름으로 메시지를 보냅니다. Declaration public static void Send(string eventName) Parameters Type Name Description string eventName 이벤트의 이름입니다."
   },
-  "index.html": {
-    "href": "index.html",
-    "title": "| USingleton",
-    "keywords": ""
-  },
   "license/LICENSE.html": {
     "href": "license/LICENSE.html",
     "title": "| USingleton",

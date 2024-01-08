@@ -30,9 +30,7 @@
       {
         "files": [
           "manual/**.yml",
-          "manual/**.md",
-          "manual/Test/**.yml",
-          "manual/Test/**.md"
+          "manual/**.md"
         ]
       },
       {
@@ -58,7 +56,8 @@
       {
         "files": [
           "images/**",
-          "code/**"
+          "code/**",
+          "index.html"
         ]
       }
     ],
