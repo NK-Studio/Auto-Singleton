@@ -5,6 +5,9 @@
   "unity": "2021.3",
   "description": "This is a user-friendly asset with a singleton pattern.",
   "documentationUrl": "https://nk-studio.github.io/USingleton/index.html",
+  "author": {
+    "name": "NK Studio"
+  },
   "keywords": [
     "Singlton"
   ],
