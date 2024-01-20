@@ -1,15 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using AutoSingleton;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 using USingleton;
 using USingleton.AutoSingleton;
+using USingleton.SelfSingleton;
 using Object = UnityEngine.Object;
-using Singleton = USingleton.SelfSingleton.Singleton;
 
 #if USE_ADDRESSABLES && USINGLETON_USE_ADDRESSABLE
 using UnityEditor.AddressableAssets;
@@ -165,38 +164,107 @@ namespace AutoSingleton
                 }
             }
 
+
             // Self Singleton Create
-            Type[] allSelfSingletonTypes = SingletonManager.GetAllSingletonTypes();
-            foreach (Type type in allSelfSingletonTypes)
+            Type useAddressableAttributeType = typeof(UseAddressableAttribute);
+            Type[] allSelfSingletonTypes = SingletonManager.GetAllSingletonTypes(); // Singleton 클래스를 상속받은 모든 유형을 검색합니다.
+
+            foreach (var type in SingletonManager.GetAllSingletonTypes())
             {
-                // Resources 폴더에 생성
-                string path = "Assets/Resources/Managers/" + type.Name + ".prefab";
-
-                // Resources 폴더가 없으면 생성합니다.
-                if (!AssetDatabase.IsValidFolder("Assets/Resources"))
-                    AssetDatabase.CreateFolder("Assets", "Resources");
-
-                // Resources/Managers 폴더가 없으면 생성합니다.
-                if (!AssetDatabase.IsValidFolder("Assets/Resources/Managers"))
-                    AssetDatabase.CreateFolder("Assets/Resources", "Managers");
-
-                // 파일이 존재하는지 체크
-                if (!AssetDatabase.LoadAssetAtPath<GameObject>(path))
-                {
-                    // 없으면 생성
-                    GameObject prefab = new(type.Name);
-                    prefab.AddComponent(type);
-
-                    // 프리팹 생성
-                    PrefabUtility.SaveAsPrefabAsset(prefab, path);
-
-                    // 프리팹을 만들기 위해 씬에 배치한 임시 프리팹을 삭제한다.
-                    DestroyImmediate(prefab);
-                }
+                if (type.IsDefined(useAddressableAttributeType, true))
+                    CreateSelfSingletonAddressableStyle(type);
+                else
+                    CreateSelfSingletonResourceStyle(type);
             }
 
             // 새로고침
             AssetDatabase.Refresh();
+        }
+
+        private static void CreateSelfSingletonAddressableStyle(Type type)
+        {
+#if !USE_ADDRESSABLES && USINGLETON_USE_ADDRESSABLE
+            return null;
+#endif
+
+#if USE_ADDRESSABLES && USINGLETON_USE_ADDRESSABLE
+            // 파일이 존재하는지 체크
+            string path = "Assets/Managers/Prefabs/" + type.Name + ".prefab";
+
+            // Resources 폴더가 없으면 생성합니다.
+            if (!AssetDatabase.IsValidFolder("Assets/Managers"))
+                AssetDatabase.CreateFolder("Assets", "Managers");
+
+            if (!AssetDatabase.IsValidFolder("Assets/Managers/Prefabs"))
+                AssetDatabase.CreateFolder("Assets/Managers", "Prefabs");
+
+            // 파일이 존재하는지 체크
+            if (!AssetDatabase.LoadAssetAtPath<GameObject>(path))
+            {
+                // 없으면 생성
+                GameObject prefab = new(type.Name);
+                prefab.AddComponent(type);
+
+                // 프리팹 생성
+                PrefabUtility.SaveAsPrefabAsset(prefab, path);
+
+                // Addressable 주소 설정
+                AddressableAssetSettings targetSetting = AddressableAssetSettingsDefaultObject.GetSettings(true);
+
+                AddressableAssetGroup targetGroup = targetSetting.FindGroup("Manager");
+
+                if (!targetGroup)
+                {
+                    targetGroup = targetSetting.CreateGroup("Manager", false, false, false, null,
+                        typeof(BundledAssetGroupSchema));
+                }
+
+                //생성한 프리팹을 다시 로드해서 가져옵니다.
+                Object target = AssetDatabase.LoadAssetAtPath<Object>(path);
+
+                string assetPath = AssetDatabase.GetAssetPath(target);
+                string assetGUID = AssetDatabase.AssetPathToGUID(assetPath);
+
+                var e = targetSetting.CreateOrMoveEntry(assetGUID, targetGroup, false, false);
+                e.address = type.Name;
+                var entriesAdded = new List<AddressableAssetEntry> { e };
+
+                targetGroup.SetDirty(AddressableAssetSettings.ModificationEvent.EntryMoved, entriesAdded, false, true);
+                targetSetting.SetDirty(AddressableAssetSettings.ModificationEvent.EntryMoved, entriesAdded, true, false);
+
+
+                // 프리팹을 만들기 위해 씬에 배치한 임시 프리팹을 삭제한다.
+                DestroyImmediate(prefab);
+            }
+#endif
+        }
+
+        private static void CreateSelfSingletonResourceStyle(Type type)
+        {
+            // Resources 폴더에 생성
+            string path = "Assets/Resources/Managers/" + type.Name + ".prefab";
+
+            // Resources 폴더가 없으면 생성합니다.
+            if (!AssetDatabase.IsValidFolder("Assets/Resources"))
+                AssetDatabase.CreateFolder("Assets", "Resources");
+
+            // Resources/Managers 폴더가 없으면 생성합니다.
+            if (!AssetDatabase.IsValidFolder("Assets/Resources/Managers"))
+                AssetDatabase.CreateFolder("Assets/Resources", "Managers");
+
+            // 파일이 존재하는지 체크
+            if (!AssetDatabase.LoadAssetAtPath<GameObject>(path))
+            {
+                // 없으면 생성
+                GameObject prefab = new(type.Name);
+                prefab.AddComponent(type);
+
+                // 프리팹 생성
+                PrefabUtility.SaveAsPrefabAsset(prefab, path);
+
+                // 프리팹을 만들기 위해 씬에 배치한 임시 프리팹을 삭제한다.
+                DestroyImmediate(prefab);
+            }
         }
 
         [MenuItem("Tools/USingleton/Settings")]

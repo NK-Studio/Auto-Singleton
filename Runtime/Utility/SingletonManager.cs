@@ -223,10 +223,7 @@ namespace USingleton
             Managers.Remove(singleton.GetType());
         }
     }
-}
-
-namespace USingleton
-{
+    
     /// <summary>
     /// Singleton 클래스는 지정된 유형의 인스턴스 존재 여부를 검색하고 확인하기 위한 정적 메서드를 제공합니다. 이는 특정 인스턴스가 하나만 보장되도록 설계되었습니다.
     /// 애플리케이션에 유형이 존재합니다.
@@ -251,7 +248,6 @@ namespace USingleton
                 T autoCreateInstance = Resources.Load<T>("Managers/" + typeof(T).Name);
                 if (autoCreateInstance)
                     return Object.Instantiate(autoCreateInstance);
-                ;
             }
 
             if (AutoSingletonSettings.CurrentSettings.ShowDebugLog)
