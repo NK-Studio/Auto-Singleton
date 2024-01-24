@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "/Users/nkstudio/Desktop/USingleton",
+  "source_base_path": "/Users/nkstudio/Desktop/USingleton Test/Assets/USingleton",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -609,7 +609,7 @@
       "output": {
         ".html": {
           "relative_path": "src/USingleton/CHANGELOG.html",
-          "hash": "2pml/10p8A5MELXdV9dB4GuJKhptmxZ5hUMIVDc+jhY="
+          "hash": "kaj0OS2qvnnrNaNRbC20eqLwzE191I6VCCvjuLtiyNA="
         }
       },
       "is_incremental": false,
