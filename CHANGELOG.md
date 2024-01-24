@@ -1,4 +1,8 @@
 # Changelog
+## [1.2.7] - 2024-01-24
+### Fixed
+- Fixed an issue where building could not be done due to defined symbol code.
+
 ## [1.2.6] - 2024-01-08
 ### Fixed
 - Change Messager class name

@@ -90,16 +90,32 @@ namespace USingleton.AutoSingleton
             return defaultAsset;
         }
 
+#if UNITY_EDITOR
         private void OnValidate()
         {
+            UpdateDefineSymbols();
+        }
+#endif
+
+        /// <summary>
+        /// Updates the scripting define symbols for the selected build target group.
+        /// If 'useAddressable' is true, it adds the 'AddressableDefine' symbol to the existing symbols.
+        /// If 'useAddressable' is false, it removes the 'AddressableDefine' symbol from the existing symbols.
+        /// </summary>
+        /// <remarks>
+        /// This method only takes effect when running in Unity Editor.
+        /// </remarks>
+        private void UpdateDefineSymbols()
+        {
+#if UNITY_EDITOR
             BuildTargetGroup buildTargetGroup = EditorUserBuildSettings.selectedBuildTargetGroup;
             string defines = PlayerSettings.GetScriptingDefineSymbolsForGroup(buildTargetGroup);
-            
+
             if (useAddressable)
             {
                 if (defines.Contains(AddressableDefine))
                     return;
-                
+
                 defines += $";{AddressableDefine}";
                 PlayerSettings.SetScriptingDefineSymbolsForGroup(buildTargetGroup, defines);
             }
@@ -107,10 +123,11 @@ namespace USingleton.AutoSingleton
             {
                 if (!defines.Contains(AddressableDefine))
                     return;
-                
+
                 defines = defines.Replace(AddressableDefine, "");
                 PlayerSettings.SetScriptingDefineSymbolsForGroup(buildTargetGroup, defines);
             }
+#endif
         }
     }
 }
