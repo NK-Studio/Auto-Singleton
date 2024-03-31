@@ -269,5 +269,15 @@ namespace USingleton
         {
             return SingletonManager.Managers.ContainsKey(typeof(T));
         }
+
+        /// <summary>
+        /// SingletonManager에 지정된 유형의 인스턴스가 있는지 여부를 확인합니다.
+        /// </summary>
+        /// <param name="singleton">확인할 MonoBehaviour 인스턴스의 유형입니다.</param>
+        /// <returns>지정된 유형의 인스턴스가 SingletonManager에 있으면 true이고, 그렇지 않으면 false입니다.</returns>
+        public static bool HasInstance(SelfSingleton.Singleton singleton)
+        {
+            return SingletonManager.Managers.ContainsKey(singleton.GetType());
+        }
     }
 }

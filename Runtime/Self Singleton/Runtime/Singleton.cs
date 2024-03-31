@@ -5,8 +5,10 @@ namespace USingleton.SelfSingleton
     /// <summary>
     /// Unity에서 싱글톤 디자인 패턴을 구현하기 위한 기본 클래스입니다.
     /// </summary>
-    public abstract class Singleton : MonoBehaviour  
+    public abstract class Singleton : MonoBehaviour
     {
+        private bool _originInstance;
+
         /// <summary>
         /// 새로운 씬이 로드될 때 게임 오브젝트가 파괴되는 것을 방지합니다.
         /// </summary>
@@ -17,16 +19,23 @@ namespace USingleton.SelfSingleton
         {
             return true;
         }
-        
+
         protected virtual void Awake()
         {
-            SingletonManager.Create(this, DontDestroyOnLoad());
-            name = GetType().Name;
+            if (!USingleton.Singleton.HasInstance(this))
+            {
+                SingletonManager.Create(this, DontDestroyOnLoad());
+                name = GetType().Name;
+                _originInstance = true;
+            }
+            else
+                Destroy(gameObject);
         }
-        
+
         protected virtual void OnDestroy()
         {
-            SingletonManager.Release(this);
+            if (_originInstance)
+                SingletonManager.Release(this);
         }
     }
 }

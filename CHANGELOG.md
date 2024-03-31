@@ -1,4 +1,8 @@
 # Changelog
+## [1.2.8] - 2024-04-01
+### Fixed
+- Fixed an issue where multiple Self Singleton instances were created
+
 ## [1.2.7] - 2024-01-24
 ### Fixed
 - Fixed an issue where building could not be done due to defined symbol code.
