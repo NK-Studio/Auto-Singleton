@@ -251,7 +251,6 @@ namespace USingleton
                 T autoCreateInstance = Resources.Load<T>("Managers/" + typeof(T).Name);
                 if (autoCreateInstance)
                     return Object.Instantiate(autoCreateInstance);
-                ;
             }
 
             if (AutoSingletonSettings.CurrentSettings.ShowDebugLog)

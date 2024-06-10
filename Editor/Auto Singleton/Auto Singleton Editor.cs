@@ -158,7 +158,9 @@ namespace AutoSingleton
 
                         }
 #endif
-
+                        var targetPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+                        ManagerList.Instance.AddManager(targetPrefab);
+                        
                         // 프리팹을 만들기 위해 씬에 배치한 임시 프리팹을 삭제한다.
                         DestroyImmediate(prefab);
                     }
@@ -166,34 +168,34 @@ namespace AutoSingleton
             }
 
             // Self Singleton Create
-            Type[] allSelfSingletonTypes = SingletonManager.GetAllSingletonTypes();
-            foreach (Type type in allSelfSingletonTypes)
-            {
-                // Resources 폴더에 생성
-                string path = "Assets/Resources/Managers/" + type.Name + ".prefab";
-
-                // Resources 폴더가 없으면 생성합니다.
-                if (!AssetDatabase.IsValidFolder("Assets/Resources"))
-                    AssetDatabase.CreateFolder("Assets", "Resources");
-
-                // Resources/Managers 폴더가 없으면 생성합니다.
-                if (!AssetDatabase.IsValidFolder("Assets/Resources/Managers"))
-                    AssetDatabase.CreateFolder("Assets/Resources", "Managers");
-
-                // 파일이 존재하는지 체크
-                if (!AssetDatabase.LoadAssetAtPath<GameObject>(path))
-                {
-                    // 없으면 생성
-                    GameObject prefab = new(type.Name);
-                    prefab.AddComponent(type);
-
-                    // 프리팹 생성
-                    PrefabUtility.SaveAsPrefabAsset(prefab, path);
-
-                    // 프리팹을 만들기 위해 씬에 배치한 임시 프리팹을 삭제한다.
-                    DestroyImmediate(prefab);
-                }
-            }
+            // Type[] allSelfSingletonTypes = SingletonManager.GetAllSingletonTypes();
+            // foreach (Type type in allSelfSingletonTypes)
+            // {
+            //     // Resources 폴더에 생성
+            //     string path = "Assets/Resources/Managers/" + type.Name + ".prefab";
+            //
+            //     // Resources 폴더가 없으면 생성합니다.
+            //     if (!AssetDatabase.IsValidFolder("Assets/Resources"))
+            //         AssetDatabase.CreateFolder("Assets", "Resources");
+            //
+            //     // Resources/Managers 폴더가 없으면 생성합니다.
+            //     if (!AssetDatabase.IsValidFolder("Assets/Resources/Managers"))
+            //         AssetDatabase.CreateFolder("Assets/Resources", "Managers");
+            //
+            //     // 파일이 존재하는지 체크
+            //     if (!AssetDatabase.LoadAssetAtPath<GameObject>(path))
+            //     {
+            //         // 없으면 생성
+            //         GameObject prefab = new(type.Name);
+            //         prefab.AddComponent(type);
+            //
+            //         // 프리팹 생성
+            //         PrefabUtility.SaveAsPrefabAsset(prefab, path);
+            //
+            //         // 프리팹을 만들기 위해 씬에 배치한 임시 프리팹을 삭제한다.
+            //         DestroyImmediate(prefab);
+            //     }
+            // }
 
             // 새로고침
             AssetDatabase.Refresh();
