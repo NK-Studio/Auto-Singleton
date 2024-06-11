@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 
-namespace UnityEngine.USingleton
+namespace UnityEngine.Singleton
 {
     [CustomEditor(typeof(USingletonSettings))]
     public class USingletonEditor : Editor

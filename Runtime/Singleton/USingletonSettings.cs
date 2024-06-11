@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEditor;
 #endif
 
-namespace UnityEngine.USingleton
+namespace UnityEngine.Singleton
 {
     /// <summary>
     /// USingleton 기능에 대한 설정을 나타냅니다.

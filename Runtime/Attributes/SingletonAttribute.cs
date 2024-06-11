@@ -1,6 +1,6 @@
 using System;
 
-namespace UnityEngine.USingleton
+namespace UnityEngine.Singleton
 {
     /// <summary>
     /// SingletonAttribute는 클래스의 단일 인스턴스만 애플리케이션에 존재해야 할 경우 사용됩니다.

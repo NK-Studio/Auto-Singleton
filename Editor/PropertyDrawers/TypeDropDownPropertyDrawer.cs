@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEditor;
 
-namespace UnityEngine.USingleton
+namespace UnityEngine.Singleton
 {
     [CustomPropertyDrawer(typeof(TypeDropDownAttribute))]
     public class TypeDropDownPropertyDrawer : PropertyDrawer

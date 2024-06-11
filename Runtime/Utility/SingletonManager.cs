@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using System.Collections.Generic;
 
-namespace UnityEngine.USingleton
+namespace UnityEngine.Singleton
 {
     /// <summary>
     /// 이 클래스는 SingletonAttribute를 기반으로 싱글톤 개체의 생성 및 릴리스를 관리합니다.
