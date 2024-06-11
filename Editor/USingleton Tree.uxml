@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:GroupBox>
+        <uie:PropertyField binding-path="managerList" label="Manager List" name="managerList-field" />
+    </ui:GroupBox>
+    <ui:VisualElement name="Space" style="flex-grow: 1; height: 3px;" />
+    <ui:GroupBox name="GroupBox">
+        <ui:IMGUIContainer name="List-Container" />
+        <uie:PropertyField binding-path="showDebugLog" name="propertyField-ShowDebugLog" style="margin-top: 12px;" />
+    </ui:GroupBox>
+</ui:UXML>
