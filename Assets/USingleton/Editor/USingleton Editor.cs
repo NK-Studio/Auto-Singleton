@@ -60,8 +60,6 @@ namespace UnityEngine.Singleton
         [MenuItem("Tools/USingleton/Refresh")]
         private static void ForceRefresh()
         {
-            Assert.IsNotNull(USingletonSettings.CurrentSettings, "USingletonSettings is null");
-
             // 기존 리스트 삭제
             USingletonSettings.CurrentSettings.ClearManagerList();
             

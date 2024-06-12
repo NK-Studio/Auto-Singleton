@@ -12,7 +12,7 @@ namespace UnityEngine.Singleton
     /// </summary>
     public class USingletonSettings : ScriptableObject
     {
-        [SerializeField] private List<GameObject> managerList;
+        [SerializeField] private List<GameObject> managerList = new();
         
         public string[] ExcludedManagers => excludedManagers;
 
@@ -80,7 +80,7 @@ namespace UnityEngine.Singleton
         /// <param name="manager"></param>
         public void AddManager(GameObject manager)
         {
-            managerList.Add(manager);
+            managerList?.Add(manager);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace UnityEngine.Singleton
         /// </summary>
         public void ClearManagerList()
         {
-            managerList.Clear();
+            managerList?.Clear();
         }
         
         private static USingletonSettings _defaultCreator;
