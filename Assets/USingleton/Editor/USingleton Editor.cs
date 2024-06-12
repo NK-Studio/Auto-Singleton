@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEditor;
 using UnityEditor.UIElements;
+using UnityEngine.Assertions;
 using UnityEngine.UIElements;
 
 namespace UnityEngine.Singleton
@@ -59,6 +60,8 @@ namespace UnityEngine.Singleton
         [MenuItem("Tools/USingleton/Refresh")]
         private static void ForceRefresh()
         {
+            Assert.IsNotNull(USingletonSettings.CurrentSettings, "USingletonSettings is null");
+
             // 기존 리스트 삭제
             USingletonSettings.CurrentSettings.ClearManagerList();
             
